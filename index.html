@@ -48,25 +48,26 @@
     <!-- Hero Section with Auto-scrolling Images -->
     <div class="pt-16">
         <!-- Swiper -->
-        <div class="swiper-container h-[500px] bg-gray-100">
+        <div class="swiper-container h-[650px] bg-gray-100 relative"> <!-- Changed from h-[700px] to h-[600px] -->
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
-                    <img src="https://images.unsplash.com/photo-1583324113626-70df0f4deaab?auto=format&fit=crop&w=1600" 
+                    <img src="./images/woman-putting-on-compression-stocking-600nw-2471333489.webp" 
                          alt="Medical Equipment" 
                          class="w-full h-full object-cover">
                 </div>
                 <div class="swiper-slide">
-                    <img src="https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=1600" 
+                    <img src="./images/whm240109-digital-ecomm-orthopedic-shoes-lead3-66f701a8b0cd0.jpg" 
                          alt="Healthcare Professional" 
                          class="w-full h-full object-cover">
                 </div>
                 <div class="swiper-slide">
-                    <img src="https://images.unsplash.com/photo-1559757175-7c12f8119223?auto=format&fit=crop&w=1600" 
+                    <img src="./images/orthotics-for-sports.jpg" 
                          alt="Orthopedic Care" 
                          class="w-full h-full object-cover">
                 </div>
             </div>
-            <div class="swiper-pagination"></div>
+            <!-- Modified pagination position -->
+            <div class="swiper-pagination !bottom-8"></div>
         </div>
 
         <!-- Content Overlay -->
@@ -84,19 +85,26 @@
     </div>
 
     <!-- Features Section -->
-    <section class="py-20 px-4">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="bg-white p-8 rounded-2xl shadow-lg">
-                <h3 class="text-xl font-bold text-primary-dark mb-4">Custom Orthotics</h3>
-                <p class="text-gray-600">Personalized foot support designed for your unique needs and comfort.</p>
+    <section class="py-18 px-4"> <!-- Changed from py-32 to py-24 for less vertical spacing -->
+
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
+            <div class="bg-white p-10 rounded-2xl shadow-lg transform hover:-translate-y-1 transition duration-300">
+                <h3 class="text-2xl font-bold text-primary-dark mb-6">Custom Orthotics</h3>
+                <p class="text-gray-600 leading-relaxed">
+                    Personalized foot support designed for your unique needs and comfort. Our custom orthotics are crafted to provide optimal support and alignment.
+                </p>
             </div>
-            <div class="bg-white p-8 rounded-2xl shadow-lg">
-                <h3 class="text-xl font-bold text-primary-dark mb-4">Orthopedic Shoes</h3>
-                <p class="text-gray-600">Premium footwear combining style with therapeutic benefits.</p>
+            <div class="bg-white p-10 rounded-2xl shadow-lg transform hover:-translate-y-1 transition duration-300">
+                <h3 class="text-2xl font-bold text-primary-dark mb-6">Orthopedic Shoes</h3>
+                <p class="text-gray-600 leading-relaxed">
+                    Premium footwear combining style with therapeutic benefits. Each pair is selected to provide both comfort and support for your daily activities.
+                </p>
             </div>
-            <div class="bg-white p-8 rounded-2xl shadow-lg">
-                <h3 class="text-xl font-bold text-primary-dark mb-4">Compression Stockings</h3>
-                <p class="text-gray-600">Medical-grade compression wear for improved circulation.</p>
+            <div class="bg-white p-10 rounded-2xl shadow-lg transform hover:-translate-y-1 transition duration-300">
+                <h3 class="text-2xl font-bold text-primary-dark mb-6">Compression Stockings</h3>
+                <p class="text-gray-600 leading-relaxed">
+                    Medical-grade compression wear for improved circulation. Our stockings help manage swelling and promote healthy blood flow throughout your day.
+                </p>
             </div>
         </div>
     </section>
