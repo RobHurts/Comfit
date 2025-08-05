@@ -31,6 +31,15 @@
             }
         }
     </script>
+    <!-- Replace the existing EmailJS script section in the head -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script type="text/javascript">
+    (function() {
+        emailjs.init({
+            publicKey: "H_VirE27shyAvkLOp",
+        });
+    })();
+</script>
     
     <!-- Loading Animation Style -->
     <style>
@@ -148,11 +157,11 @@
             <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div class="bg-white/90 p-6 rounded-2xl shadow-lg">
                     <h3 class="text-xl font-bold text-primary-dark mb-4">Visit Us</h3>
-                    <p class="text-gray-600">123 Medical Center Drive<br>Suite 100<br>City, State 12345</p>
+                    <p class="text-gray-600">223 Lee Ave,<br>Brooklyn,<br>NY 11206, United States</p>
                 </div>
                 <div class="bg-white/90 p-6 rounded-2xl shadow-lg">
                     <h3 class="text-xl font-bold text-primary-dark mb-4">Business Hours</h3>
-                    <p class="text-gray-600">Monday - Friday: 9:00 AM - 5:00 PM<br>Saturday: 10:00 AM - 2:00 PM<br>Sunday: Closed</p>
+                    <p class="text-gray-600">Monday - Friday: 9:00 AM - 5:00 PM<br>Saturday: Closed<br>Sunday: 9:00 AM - 5:00 PM</p>
                 </div>
             </div>
         </div>
@@ -199,9 +208,9 @@
                 <div class="text-center">
                     <h4 class="text-lg font-bold text-primary-dark mb-6">Hours</h4>
                     <div class="space-y-3">
-                        <p class="text-gray-600">Mon-Fri: 8:00 AM - 5:00 PM</p>
+                        <p class="text-gray-600">Mon-Fri: 9:00 AM - 5:00 PM</p>
                         <p class="text-gray-600">Sat: Closed</p>
-                        <p class="text-gray-600">Sun: 8:00 AM - 5:00 PM</p>
+                        <p class="text-gray-600">Sun: 9:00 AM - 5:00 PM</p>
                     </div>
                 </div>
             </div>
@@ -266,6 +275,11 @@
             let isValid = true;
             const inputs = form.querySelectorAll('input, textarea');
             
+            // Clear previous errors
+            document.querySelectorAll('.error-message').forEach(msg => msg.remove());
+            inputs.forEach(input => input.classList.remove('input-error'));
+            
+            // Validate form
             inputs.forEach(input => {
                 if (!input.value.trim()) {
                     isValid = false;
@@ -277,10 +291,36 @@
                 }
             });
 
+            // Replace the existing emailjs.send section in your form submit handler
             if (isValid) {
-                // Add your form submission logic here
-                alert('Thank you for your message. We will get back to you soon!');
-                form.reset();
+                const submitButton = form.querySelector('button[type="submit"]');
+                const originalText = submitButton.textContent;
+                submitButton.disabled = true;
+                submitButton.textContent = 'Sending...';
+
+                const templateParams = {
+                    from_name: form.name.value,
+                    to_name: "To: Comfit Team",
+                    reply_to: "From: " + form.email.value,
+                    phone_number: "Phone: " + form.phone.value,
+                    message: form.message.value
+                    // Remove to_email from here as it should be configured in the EmailJS template
+                };
+
+                emailjs.send('service_my54jkh', 'template_02kp6xy', templateParams)
+                    .then((response) => {
+                        console.log('SUCCESS:', response);
+                        alert('Thank you for your message. We will get back to you soon!');
+                        form.reset();
+                    })
+                    .catch((error) => {
+                        console.error('FAILED:', error);
+                        alert('Sorry, there was an error sending your message. Please try again later.');
+                    })
+                    .finally(() => {
+                        submitButton.disabled = false;
+                        submitButton.textContent = originalText;
+                    });
             }
         });
 
