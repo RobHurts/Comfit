@@ -176,14 +176,16 @@
                 
                 <!-- Download Button -->
                 <div class="inline-block" data-aos="fade-up" data-aos-delay="200">
-                    <a href="./forms/order-form.pdf" download="Comfit-Order-Form.pdf" class="download-button inline-flex items-center px-10 py-5 text-white rounded-2xl text-lg font-semibold shadow-2xl transform transition-all duration-300 hover:scale-105">
+                    <a id="downloadOrderForm" data-download="order-form" href="./Forms/order-form.pdf" download="Comfit-Order-Form.pdf" class="download-button inline-flex items-center px-10 py-5 text-white rounded-2xl text-lg font-semibold shadow-2xl transform transition-all duration-300 hover:scale-105" target="_blank" rel="noopener">
                         <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
                         </svg>
                         Download Order Form (PDF)
                     </a>
                 </div>
-                
+
+                <p id="downloadStatus" class="text-sm text-red-600 mt-3" aria-live="polite"></p>
+
                 <p class="text-sm text-gray-500 mt-4">
                     <svg class="w-4 h-4 inline mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
@@ -321,7 +323,7 @@
 
     <!-- Important Information Section -->
     <section class="py-20 bg-gradient-to-br from-primary-dark to-primary relative overflow-hidden">
-        <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.1"%3E%3Cpath d="M20 20c0-11.046-8.954-20-20-20s-20 8.954-20 20 8.954 20 20 20 20-8.954 20-20z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-50"></div>
+        <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.1"%3E%3Cpath d="M20 20c0-11.046-8.954-20-20-20s-20 8.954-20 20 8.954 20 20 20 20-8.954 20-20z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")] opacity-50"></div>
         
         <div class="max-w-4xl mx-auto px-6 relative z-10">
             <div class="text-center mb-12" data-aos="fade-up">
@@ -422,7 +424,7 @@
 
     <!-- CTA Section -->
     <section class="py-20 bg-gradient-to-br from-primary-dark to-primary relative overflow-hidden">
-        <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.1"%3E%3Cpath d="M20 20c0-11.046-8.954-20-20-20s-20 8.954-20 20 8.954 20 20 20 20-8.954 20-20z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-50"></div>
+        <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.1"%3E%3Cpath d="M20 20c0-11.046-8.954-20-20-20s-20 8.954-20 20 8.954 20 20 20 20-8.954 20-20z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")] opacity-50"></div>
         
         <div class="max-w-4xl mx-auto text-center px-6 relative z-10">
             <div data-aos="fade-up">
@@ -436,7 +438,7 @@
                 <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
                     <a href="contact.html" class="inline-flex items-center px-8 py-4 bg-white text-primary-dark rounded-2xl text-lg font-semibold shadow-2xl hover:shadow-white/25 transition-all duration-300 transform hover:scale-105">
                         <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2h-5.586a1 1 0 01.707.293l-5.414 5.414a1 1 0 01-.293.707V19a2 2 0 01-2 2z"/>
                         </svg>
                         Contact Us
                     </a>
@@ -453,7 +455,7 @@
 
     <!-- Modern Footer -->
     <footer class="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white relative overflow-hidden">
-        <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23a78bfa" fill-opacity="0.1"%3E%3Ccircle cx="30" cy="30" r="1"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-30"></div>
+        <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23a78bfa" fill-opacity="0.1"%3E%3Ccircle cx="30" cy="30" r="1"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")] opacity-30"></div>
         
         <div class="max-w-7xl mx-auto py-16 px-6 relative z-10">
             <div class="text-center mb-12">
