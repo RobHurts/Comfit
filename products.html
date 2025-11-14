@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Products — Comfit Surgical Supplies</title>
+  <meta name="description" content="Browse our full catalog of medical support garments and breast pumps: pregnancy belts, pelvic support, abdominal binders, hernia trusses, and hospital-grade breast pumps." />
+  <link rel="icon" href="./images/Untitled design (81).png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root { --muted:#6b7280; --accent:#7c3aed; }
+    .sidebar { min-width:220px; }
+    .product-grid { display:grid; grid-template-columns: repeat(auto-fill,minmax(260px,1fr)); gap:1.5rem; }
+    .card-img { height:200px; object-fit:cover; width:100%; border-radius:0.75rem; }
+    .filter-btn.active { 
+      background: linear-gradient(135deg, #7c3aed 0%, #a78bfa 100%);
+      color:white; 
+      border-color: transparent;
+      box-shadow: 0 2px 8px rgba(124, 58, 237, 0.3);
+    }
+    .product-item {
+      transition: all 0.3s ease;
+    }
+    .product-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 16px -4px rgba(124, 58, 237, 0.15);
+    }
+  </style>
+</head>
+<body class="antialiased bg-gradient-to-br from-gray-50 via-indigo-50/20 to-violet-50/20 text-gray-900">
+  <div class="min-h-screen flex">
+    <!-- Sidebar -->
+    <aside class="sidebar hidden md:flex flex-col gap-6 p-6 bg-white/90 shadow-lg fixed h-screen z-50">
+      <a href="index.html" class="flex items-center gap-3">
+        <img src="./images/Untitled design (81).png" alt="Comfit" class="w-12 h-12 rounded-md object-contain"/>
+        <div>
+          <div class="text-lg font-bold">Comfit</div>
+          <div class="text-xs text-gray-500">Surgical Supplies</div>
+        </div>
+      </a>
+
+      <nav class="flex-1 mt-4">
+        <ul class="space-y-2 text-sm">
+          <li><a href="index.html" class="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-gray-100">Home</a></li>
+          <li><a href="about.html" class="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-gray-100">About</a></li>
+          <li><a href="products.html" class="flex items-center gap-3 px-3 py-2 rounded-md bg-indigo-50 text-indigo-700 font-semibold">Products</a></li>
+          <li><a href="order.html" class="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-gray-100">How to Order</a></li>
+          <li><a href="insurance.html" class="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-gray-100">Insurance</a></li>
+          <li><a href="privacy-policy.html" class="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-gray-100">Privacy</a></li>
+          <li><a href="contact.html" class="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-gray-100">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="mt-auto">
+        <a href="order.html" class="block w-full text-center px-3 py-2 bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-md font-semibold">Order Now</a>
+        <a href="tel:+17184008370" class="block w-full mt-3 text-center px-3 py-2 border rounded-md text-sm text-gray-700">Call: +1 718‑400‑8370</a>
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <main class="flex-1 md:ml-[220px]">
+      <!-- Mobile nav -->
+      <header class="md:hidden flex items-center justify-between p-4 bg-white shadow-sm sticky top-0 z-40">
+        <a href="index.html" class="flex items-center gap-2">
+          <img src="./images/Untitled design (81).png" alt="Comfit" class="w-10 h-10"/>
+          <span class="font-semibold">Comfit</span>
+        </a>
+        <button id="menuBtn" class="p-2 rounded-md bg-gray-100">Menu</button>
+      </header>
+
+      <!-- Hero header -->
+      <section class="py-16 px-6 lg:px-12 bg-gradient-to-br from-indigo-600 via-violet-600 to-purple-700 relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 w-80 h-80 bg-violet-400/20 rounded-full blur-3xl"></div>
+        
+        <div class="max-w-7xl mx-auto relative z-10">
+          <div class="inline-block px-4 py-2 bg-white/20 rounded-full text-white text-sm mb-4">
+            <span class="font-semibold">🏥 Professional Medical Products</span>
+          </div>
+          <h1 class="text-4xl md:text-6xl font-extrabold mb-4 text-white">Product Catalog</h1>
+          <p class="text-lg md:text-xl text-indigo-100 max-w-2xl">Medical support garments and hospital-grade breast pumps — clinically proven, insurance-friendly, and fitted to your needs.</p>
+        </div>
+      </section>
+
+      <!-- Filters + Search -->
+      <section class="py-6 px-6 lg:px-12 bg-white border-b sticky top-0 md:top-0 z-10 shadow-sm">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+          <div class="flex gap-2 flex-wrap justify-center md:justify-start">
+            <button class="filter-btn active px-4 py-2 rounded-full border text-sm font-semibold transition" data-cat="all">All Products</button>
+            <button class="filter-btn px-4 py-2 rounded-full border border-pink-200 text-pink-700 text-sm font-semibold transition hover:bg-pink-50" data-cat="pregnancy">Pregnancy</button>
+            <button class="filter-btn px-4 py-2 rounded-full border border-purple-200 text-purple-700 text-sm font-semibold transition hover:bg-purple-50" data-cat="pelvic">Pelvic</button>
+            <button class="filter-btn px-4 py-2 rounded-full border border-cyan-200 text-cyan-700 text-sm font-semibold transition hover:bg-cyan-50" data-cat="abdominal">Abdominal</button>
+            <button class="filter-btn px-4 py-2 rounded-full border border-amber-200 text-amber-700 text-sm font-semibold transition hover:bg-amber-50" data-cat="hernia">Hernia</button>
+            <button class="filter-btn px-4 py-2 rounded-full border border-green-200 text-green-700 text-sm font-semibold transition hover:bg-green-50" data-cat="breastpump">Breast Pumps</button>
+          </div>
+          <div class="relative w-full md:w-64">
+            <input id="searchBox" type="search" placeholder="Search products..." class="w-full px-4 py-2 pl-10 border-2 border-indigo-100 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent" />
+            <svg class="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+            </svg>
+          </div>
+        </div>
+      </section>
+
+      <!-- Products grid -->
+      <section class="py-10 px-6 lg:px-12">
+        <div id="productsGrid" class="max-w-7xl mx-auto product-grid">
+          <!-- Support Garments -->
+          <article class="product-item p-5 bg-white rounded-2xl shadow-md border border-pink-100 hover:border-pink-300" data-cat="pregnancy">
+            <img src="./featuredproducts/1P.avif" alt="Pregnancy Support Belt" class="card-img mb-4" />
+            <h3 class="font-bold text-lg mb-2 text-gray-800">Pregnancy Support Belt</h3>
+            <p class="text-sm text-gray-600 mb-4">Adjustable maternity belt providing gentle compression and lumbar support to reduce back pain and discomfort during all stages of pregnancy.</p>
+            <a href="order.html" class="block w-full text-center px-4 py-2 bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-lg text-sm font-semibold hover:shadow-md transition">Order Now</a>
+          </article>
+
+          <article class="product-item p-5 bg-white rounded-2xl shadow-md border border-purple-100 hover:border-purple-300" data-cat="pelvic">
+            <img src="./featuredproducts/2P.jpg" alt="V2 Pelvic Support" class="card-img mb-4" />
+            <h3 class="font-bold text-lg mb-2 text-gray-800">V2 Pelvic Support System</h3>
+            <p class="text-sm text-gray-600 mb-4">Advanced pelvic floor support garment designed for vulvar varicosities and pelvic organ support with adjustable thigh straps.</p>
+            <a href="order.html" class="block w-full text-center px-4 py-2 bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-lg text-sm font-semibold hover:shadow-md transition">Order Now</a>
+          </article>
+
+          <article class="product-item p-5 bg-white rounded-2xl shadow-md border border-cyan-100 hover:border-cyan-300" data-cat="abdominal">
+            <img src="./featuredproducts/3P.avif" alt="Abdominal Binder" class="card-img mb-4" />
+            <h3 class="font-bold text-lg mb-2 text-gray-800">Abdominal Support Binder</h3>
+            <p class="text-sm text-gray-600 mb-4">Post-surgical compression binder for abdominal support, ideal for C-section recovery, hernia repair, and core stabilization.</p>
+            <a href="order.html" class="block w-full text-center px-4 py-2 bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-lg text-sm font-semibold hover:shadow-md transition">Order Now</a>
+          </article>
+
+          <article class="product-item p-5 bg-white rounded-2xl shadow-md border border-amber-100 hover:border-amber-300" data-cat="hernia">
+            <img src="./featuredproducts/4P.jpg" alt="Hernia Truss" class="card-img mb-4" />
+            <h3 class="font-bold text-lg mb-2 text-gray-800">Double Hernia Truss</h3>
+            <p class="text-sm text-gray-600 mb-4">Professional-grade inguinal hernia support with dual pressure pads for bilateral or unilateral hernias. Doctor-recommended design.</p>
+            <a href="order.html" class="block w-full text-center px-4 py-2 bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-lg text-sm font-semibold hover:shadow-md transition">Order Now</a>
+          </article>
+
+          <!-- Breast Pumps -->
+          <article class="product-item p-5 bg-white rounded-2xl shadow-md border border-green-100 hover:border-green-300" data-cat="breastpump">
+            <img src="https://images.unsplash.com/photo-1555252333-9f8e92e65df9?w=400&h=300&fit=crop" alt="Ardo Melia Breast Pump" class="card-img mb-4" />
+            <h3 class="font-bold text-lg mb-2 text-gray-800">Ardo Melia Hospital-Grade Pump</h3>
+            <p class="text-sm text-gray-600 mb-4">Swiss-engineered double electric pump with 64 expression levels, vacuum seal technology, and whisper-quiet operation. Ideal for exclusive pumping.</p>
+            <a href="order.html" class="block w-full text-center px-4 py-2 bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-lg text-sm font-semibold hover:shadow-md transition">Order Now</a>
+          </article>
+
+          <article class="product-item p-5 bg-white rounded-2xl shadow-md border border-emerald-100 hover:border-emerald-300" data-cat="breastpump">
+            <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=400&h=300&fit=crop" alt="Zomee Breast Pump" class="card-img mb-4" />
+            <h3 class="font-bold text-lg mb-2 text-gray-800">Zomee Z2 Double Electric Pump</h3>
+            <p class="text-sm text-gray-600 mb-4">Portable closed-system pump with adjustable suction, massage mode, and rechargeable battery. Lightweight design for pumping on-the-go.</p>
+            <a href="order.html" class="block w-full text-center px-4 py-2 bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-lg text-sm font-semibold hover:shadow-md transition">Order Now</a>
+          </article>
+
+          <article class="product-item p-5 bg-white rounded-2xl shadow-md border border-teal-100 hover:border-teal-300" data-cat="breastpump">
+            <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=300&fit=crop" alt="Drive Medical Pump" class="card-img mb-4" />
+            <h3 class="font-bold text-lg mb-2 text-gray-800">Drive Medical Double Electric Pump</h3>
+            <p class="text-sm text-gray-600 mb-4">Affordable hospital-grade option with independent motor control, backflow protection, and easy-clean components. FSA/HSA eligible.</p>
+            <a href="order.html" class="block w-full text-center px-4 py-2 bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-lg text-sm font-semibold hover:shadow-md transition">Order Now</a>
+          </article>
+
+          <article class="product-item p-5 bg-white rounded-2xl shadow-md border border-lime-100 hover:border-lime-300" data-cat="breastpump">
+            <img src="https://images.unsplash.com/photo-1498049794561-7780e7231661?w=400&h=300&fit=crop" alt="Motif Duo Pump" class="card-img mb-4" />
+            <h3 class="font-bold text-lg mb-2 text-gray-800">Motif Duo Breast Pump</h3>
+            <p class="text-sm text-gray-600 mb-4">Dual-motor technology with 3-phase expression, night light, and wireless operation. Includes premium insulated tote and accessories.</p>
+            <a href="order.html" class="block w-full text-center px-4 py-2 bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-lg text-sm font-semibold hover:shadow-md transition">Order Now</a>
+          </article>
+
+          <article class="product-item p-5 bg-white rounded-2xl shadow-md border border-green-100 hover:border-green-300" data-cat="breastpump">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop" alt="Spectra S2 Plus" class="card-img mb-4" />
+            <h3 class="font-bold text-lg mb-2 text-gray-800">Spectra S2 Plus Hospital-Grade</h3>
+            <p class="text-sm text-gray-600 mb-4">Award-winning closed system pump with adjustable suction and speed, night light, and silent motor. The gold standard for lactation professionals.</p>
+            <a href="order.html" class="block w-full text-center px-4 py-2 bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-lg text-sm font-semibold hover:shadow-md transition">Order Now</a>
+          </article>
+        </div>
+
+        <!-- CTA -->
+        <div class="max-w-7xl mx-auto mt-16 text-center p-10 bg-gradient-to-br from-indigo-600 via-violet-600 to-purple-700 rounded-3xl text-white shadow-2xl relative overflow-hidden">
+          <div class="absolute top-0 left-0 w-72 h-72 bg-white/10 rounded-full blur-3xl"></div>
+          <div class="absolute bottom-0 right-0 w-96 h-96 bg-violet-400/20 rounded-full blur-3xl"></div>
+          
+          <div class="relative z-10">
+            <div class="inline-block px-4 py-2 bg-white/20 rounded-full text-white text-sm mb-4">
+              <span class="font-semibold">💬 Expert Assistance</span>
+            </div>
+            <h2 class="text-3xl md:text-4xl font-bold mb-3">Need Help Choosing?</h2>
+            <p class="mb-8 text-lg text-indigo-100 max-w-2xl mx-auto">Our specialists can help you find the right product and verify insurance coverage. Get personalized recommendations today.</p>
+            <div class="flex gap-4 justify-center flex-wrap">
+              <a href="contact.html" class="px-8 py-4 bg-white text-indigo-600 rounded-full font-semibold shadow-xl hover:shadow-2xl hover:scale-105 transition-all">Request Consultation</a>
+              <a href="tel:+17184008370" class="px-8 py-4 border-2 border-white rounded-full font-semibold hover:bg-white/10 backdrop-blur-sm transition-all">Call +1 718‑400‑8370</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="px-6 py-8 text-sm text-gray-600 border-t bg-gradient-to-br from-gray-50 to-indigo-50/30">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+          <div>
+            <div class="font-semibold text-gray-800">Comfit Surgical Supplies</div>
+            <div class="text-xs">223 Lee Ave, Brooklyn, NY • info@comfitinc.com</div>
+          </div>
+          <div class="text-xs">&copy; 2025 Comfit Surgical Supplies Co. All rights reserved.</div>
+        </div>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('menuBtn');
+    menuBtn?.addEventListener('click', () => {
+      document.querySelector('aside')?.classList.toggle('hidden');
+    });
+
+    // Filter logic
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const products = document.querySelectorAll('.product-item');
+    const searchBox = document.getElementById('searchBox');
+
+    let currentCat = 'all';
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentCat = btn.dataset.cat;
+        applyFilters();
+      });
+    });
+
+    searchBox?.addEventListener('input', applyFilters);
+
+    function applyFilters() {
+      const query = searchBox?.value?.toLowerCase() || '';
+      products.forEach(p => {
+        const cat = p.dataset.cat;
+        const text = p.textContent.toLowerCase();
+        const matchesCat = currentCat === 'all' || cat === currentCat;
+        const matchesSearch = !query || text.includes(query);
+        p.style.display = (matchesCat && matchesSearch) ? 'block' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>
