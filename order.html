@@ -38,6 +38,60 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
+        .nav-dropdown {
+            position: relative;
+        }
+        .nav-dropdown-menu {
+            position: absolute;
+            left: calc(100% - 0.5rem);
+            top: 0;
+            margin-left: 0;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%);
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 30px rgba(124, 58, 237, 0.15), 0 0 0 1px rgba(124, 58, 237, 0.1);
+            min-width: 220px;
+            z-index: 100;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(-10px);
+            transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), visibility 0s 0.3s;
+            pointer-events: none;
+            padding: 0.5rem;
+        }
+        .nav-dropdown:hover .nav-dropdown-menu,
+        .nav-dropdown-menu:hover {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
+            pointer-events: auto;
+            transition-delay: 0s;
+        }
+        .nav-dropdown-menu a {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 1rem;
+            color: #374151;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            transition: all 0.2s ease;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+        .nav-dropdown-menu a:last-child {
+            margin-bottom: 0;
+        }
+        .nav-dropdown-menu a:hover {
+            background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
+            color: #6366f1;
+            transform: translateX(4px);
+        }
+        .nav-dropdown > a svg {
+            transition: transform 0.3s ease;
+        }
+        .nav-dropdown:hover > a svg {
+            transform: translateX(3px);
+        }
     </style>
 </head>
 
@@ -55,14 +109,32 @@
 
             <nav class="flex-1 mt-4">
                 <ul class="space-y-2 text-sm">
-                    <li><a href="index.html" class="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-gray-100">Home</a></li>
-                    <li><a href="dme-scope.html" class="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-gray-100">DME Scope of Services</a></li>
+                    <li class="nav-dropdown">
+                        <a href="index.html" class="flex items-center justify-between px-3 py-2 rounded-md hover:bg-gray-100">
+                            <span>Home</span>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                            </svg>
+                        </a>
+                        <div class="nav-dropdown-menu">
+                            <a href="dme-scope.html">DME Scope of Services</a>
+                            <a href="hipaa-privacy.html">HIPAA Privacy Practices</a>
+                        </div>
+                    </li>
                     <li><a href="about.html" class="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-gray-100">About</a></li>
-                    <li><a href="products.html" class="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-gray-100">Products</a></li>
-                    <li><a href="order.html" class="flex items-center gap-3 px-3 py-2 rounded-md bg-indigo-50 text-indigo-700 font-semibold">How to Order</a></li>
-                    <li><a href="insurance.html" class="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-gray-100">Insurance</a></li>
+                    <li class="nav-dropdown">
+                        <a href="products.html" class="flex items-center justify-between px-3 py-2 rounded-md hover:bg-gray-100">
+                            <span>Products</span>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                            </svg>
+                        </a>
+                        <div class="nav-dropdown-menu">
+                            <a href="order.html" class="bg-indigo-50 text-indigo-700 font-semibold">How to Order</a>
+                            <a href="insurance.html">Insurance</a>
+                        </div>
+                    </li>
                     <li><a href="privacy-policy.html" class="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-gray-100">Privacy</a></li>
-                    <li><a href="hipaa-privacy.html" class="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-gray-100">HIPAA Privacy Practices</a></li>
                     <li><a href="contact.html" class="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-gray-100">Contact Us</a></li>
                 </ul>
             </nav>
@@ -234,37 +306,48 @@
                             </a>
                         </div>
 
-                        <!-- Phone -->
+                        <!-- Fax -->
+                        <div class="text-center p-8 bg-gradient-to-br from-amber-50 to-orange-50 rounded-2xl border border-amber-100 hover:shadow-xl transition-shadow">
+                            <div class="w-20 h-20 bg-gradient-to-br from-amber-500 to-orange-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
+                                <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z"/>
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-800 mb-3">Fax</h3>
+                            <p class="text-gray-600 mb-4 text-sm">Send your completed form via fax</p>
+                            <div class="text-amber-600 hover:text-amber-700 font-semibold">
+                                929-988-7008
+                            </div>
+                        </div>
+
+                        <!-- Secure Text -->
                         <div class="text-center p-8 bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl border border-green-100 hover:shadow-xl transition-shadow">
                             <div class="w-20 h-20 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
                                 <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/>
                                 </svg>
                             </div>
-                            <h3 class="text-xl font-bold text-gray-800 mb-3">Phone</h3>
-                            <p class="text-gray-600 mb-4 text-sm">Call us to place your order over the phone</p>
-                            <a href="tel:+17184008370" class="inline-flex items-center text-green-600 hover:text-green-700 font-semibold">
+                            <h3 class="text-xl font-bold text-gray-800 mb-3">Secure Text</h3>
+                            <p class="text-gray-600 mb-4 text-sm">Send your completed form via secure text message</p>
+                            <a href="sms:+17184008370" class="inline-flex items-center text-green-600 hover:text-green-700 font-semibold">
                                 <span>718-400-8370</span>
                                 <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
                                 </svg>
                             </a>
                         </div>
+                    </div>
 
-                        <!-- In Person -->
-                        <div class="text-center p-8 bg-gradient-to-br from-purple-50 to-violet-50 rounded-2xl border border-purple-100 hover:shadow-xl transition-shadow">
-                            <div class="w-20 h-20 bg-gradient-to-br from-purple-500 to-violet-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
-                                <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                    <div class="mt-8 text-center">
+                        <div class="inline-block px-4 py-2 bg-gradient-to-br from-purple-50 to-violet-50 rounded-2xl border border-purple-100 shadow-md">
+                            <div class="flex items-center gap-2 text-purple-600 font-semibold mb-2">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
                                 </svg>
+                                <span>Or Visit Us In Person</span>
                             </div>
-                            <h3 class="text-xl font-bold text-gray-800 mb-3">Visit Our Store</h3>
-                            <p class="text-gray-600 mb-4 text-sm">Bring your form to our Brooklyn location</p>
-                            <div class="text-purple-600 font-semibold">
-                                223 Lee Ave<br>
-                                Brooklyn, NY 11206
-                            </div>
+                            <p class="text-gray-700 text-sm">223 Lee Ave, Brooklyn, NY 11206</p>
                         </div>
                     </div>
                 </div>
