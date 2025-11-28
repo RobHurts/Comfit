@@ -11,6 +11,11 @@
     :root { --muted:#6b7280; --accent:#7c3aed; }
     .sidebar { min-width:220px; }
     .product-grid { display:grid; grid-template-columns: repeat(auto-fill,minmax(260px,1fr)); gap:1.5rem; }
+    .product-item { display: flex; flex-direction: column; height: 100%; }
+    .product-item .card-img { flex: 0 0 auto; }
+    .product-item h3 { flex: 0 0 auto; }
+    .product-item p { flex: 1 1 auto; }
+    .product-item button, .product-item a:last-child { flex: 0 0 auto; margin-top: auto; }
     .card-img { height:200px; object-fit:cover; width:100%; border-radius:0.75rem; }
     .filter-btn.active { 
       background: linear-gradient(135deg, #7c3aed 0%, #a78bfa 100%);
@@ -24,6 +29,79 @@
     .product-item:hover {
       transform: translateY(-4px);
       box-shadow: 0 8px 16px -4px rgba(124, 58, 237, 0.15);
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(124, 58, 237, 0.15) 0%, rgba(167, 139, 250, 0.15) 100%);
+      backdrop-filter: blur(8px);
+      animation: fadeIn 0.3s ease;
+      padding: 2rem;
+    }
+    .modal.active {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-content {
+      background: linear-gradient(135deg, #ffffff 0%, #fefeff 100%);
+      border-radius: 2rem;
+      max-width: 1400px;
+      width: 95%;
+      max-height: 90vh;
+      overflow-y: auto;
+      animation: slideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 25px 80px rgba(124, 58, 237, 0.25), 0 0 0 1px rgba(124, 58, 237, 0.1);
+      border: 1px solid rgba(124, 58, 237, 0.1);
+    }
+    .modal-grid {
+      display: grid;
+      grid-template-columns: 350px 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+    @media (max-width: 768px) {
+      .modal-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .modal-header {
+      background: linear-gradient(135deg, #7c3aed 0%, #a78bfa 100%);
+    }
+    .modal-image-container {
+      background: linear-gradient(135deg, #f8f9ff 0%, #eef2ff 100%);
+      border: 2px solid rgba(124, 58, 237, 0.1);
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes slideUp {
+      from { transform: translateY(50px) scale(0.95); opacity: 0; }
+      to { transform: translateY(0) scale(1); opacity: 1; }
+    }
+    .stockings-card {
+      cursor: pointer;
+    }
+    .modal-content::-webkit-scrollbar {
+      width: 8px;
+    }
+    .modal-content::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 10px;
+    }
+    .modal-content::-webkit-scrollbar-thumb {
+      background: linear-gradient(135deg, #7c3aed 0%, #a78bfa 100%);
+      border-radius: 10px;
+    }
+    .feature-badge {
+      background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
+      border: 1px solid rgba(124, 58, 237, 0.2);
     }
     .nav-dropdown {
         position: relative;
@@ -270,39 +348,39 @@
             <a href="order.html" class="block w-full text-center px-4 py-2 bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-lg text-sm font-semibold hover:shadow-md transition">Order Now</a>
           </article>
 
-          <article class="product-item p-5 bg-white rounded-2xl shadow-md border border-teal-100 hover:border-teal-300" data-cat="stockings">
+          <article class="product-item stockings-card p-5 bg-white rounded-2xl shadow-md border border-teal-100 hover:border-teal-300" data-cat="stockings" onclick="openModal('mediven-plus')">
             <img src="./featuredproducts/stockings/mediven-plus-thigh-beige-opentoe-beaded_1.webp" alt="Mediven Plus Thigh High" class="card-img mb-4" />
             <h3 class="font-bold text-lg mb-2 text-gray-800">Mediven Plus Thigh High</h3>
             <p class="text-sm text-gray-600 mb-4">Medical-grade compression stockings providing therapeutic support. Features comfortable beaded silicone band, open toe design, and graduated compression for circulation.</p>
-            <a href="order.html" class="block w-full text-center px-4 py-2 bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-lg text-sm font-semibold hover:shadow-md transition">Order Now</a>
+            <button type="button" class="block w-full text-center px-4 py-2 bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-lg text-sm font-semibold hover:shadow-md transition">View Details & Sizing</button>
           </article>
 
-          <article class="product-item p-5 bg-white rounded-2xl shadow-md border border-cyan-100 hover:border-cyan-300" data-cat="stockings">
+          <article class="product-item stockings-card p-5 bg-white rounded-2xl shadow-md border border-cyan-100 hover:border-cyan-300" data-cat="stockings" onclick="openModal('mediven-sheer')">
             <img src="./featuredproducts/stockings/mediven-sheer-and-soft-calf-ebony-closedtoe_936f15e5-b81a-4682-8995-e38fae4893d6.webp" alt="Mediven Sheer & Soft Knee Highs" class="card-img mb-4" />
             <h3 class="font-bold text-lg mb-2 text-gray-800">Mediven Sheer & Soft Knee Highs 20-30 mmHg</h3>
             <p class="text-sm text-gray-600 mb-4">Premium sheer compression knee highs with 20-30 mmHg support. Soft, comfortable fabric with closed toe design. Ideal for daily wear and medical compression needs.</p>
-            <a href="order.html" class="block w-full text-center px-4 py-2 bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-lg text-sm font-semibold hover:shadow-md transition">Order Now</a>
+            <button type="button" class="block w-full text-center px-4 py-2 bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-lg text-sm font-semibold hover:shadow-md transition">View Details & Sizing</button>
           </article>
 
-          <article class="product-item p-5 bg-white rounded-2xl shadow-md border border-sky-100 hover:border-sky-300" data-cat="stockings">
+          <article class="product-item stockings-card p-5 bg-white rounded-2xl shadow-md border border-sky-100 hover:border-sky-300" data-cat="stockings" onclick="openModal('sigvaris')">
             <img src="./featuredproducts/stockings/sigravis thigh high.jpg" alt="Sigvaris Thigh High" class="card-img mb-4" />
             <h3 class="font-bold text-lg mb-2 text-gray-800">Sigvaris Thigh High</h3>
             <p class="text-sm text-gray-600 mb-4">Premium compression thigh highs designed for superior support and comfort. Features graduated compression technology for improved circulation and all-day wearability.</p>
-            <a href="order.html" class="block w-full text-center px-4 py-2 bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-lg text-sm font-semibold hover:shadow-md transition">Order Now</a>
+            <button type="button" class="block w-full text-center px-4 py-2 bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-lg text-sm font-semibold hover:shadow-md transition">View Details & Sizing</button>
           </article>
 
-          <article class="product-item p-5 bg-white rounded-2xl shadow-md border border-indigo-100 hover:border-indigo-300" data-cat="stockings">
+          <article class="product-item stockings-card p-5 bg-white rounded-2xl shadow-md border border-indigo-100 hover:border-indigo-300" data-cat="stockings" onclick="openModal('juzo')">
             <img src="./featuredproducts/stockings/juzo soft thigh high.webp" alt="Juzo Soft Thigh High" class="card-img mb-4" />
             <h3 class="font-bold text-lg mb-2 text-gray-800">Juzo Soft Thigh High</h3>
             <p class="text-sm text-gray-600 mb-4">Ultra-soft compression thigh highs offering therapeutic support with exceptional comfort. Features silicone top band for secure fit and graduated compression for optimal leg health.</p>
-            <a href="order.html" class="block w-full text-center px-4 py-2 bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-lg text-sm font-semibold hover:shadow-md transition">Order Now</a>
+            <button type="button" class="block w-full text-center px-4 py-2 bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-lg text-sm font-semibold hover:shadow-md transition">View Details & Sizing</button>
           </article>
 
-          <article class="product-item p-5 bg-white rounded-2xl shadow-md border border-amber-100 hover:border-amber-300" data-cat="stockings">
+          <article class="product-item stockings-card p-5 bg-white rounded-2xl shadow-md border border-amber-100 hover:border-amber-300" data-cat="stockings" onclick="openModal('jobst')">
             <img src="./featuredproducts/stockings/JOBST Classic RAL Class 3, Compression Stockings, Sand.webp" alt="JOBST Classic RAL Class 3" class="card-img mb-4" />
             <h3 class="font-bold text-lg mb-2 text-gray-800">JOBST Classic RAL Class 3 Compression Stockings</h3>
             <p class="text-sm text-gray-600 mb-4">Medical-grade Class 3 compression stockings in sand color. Provides strong therapeutic compression for advanced venous conditions with durable RAL quality construction.</p>
-            <a href="order.html" class="block w-full text-center px-4 py-2 bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-lg text-sm font-semibold hover:shadow-md transition">Order Now</a>
+            <button type="button" class="block w-full text-center px-4 py-2 bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-lg text-sm font-semibold hover:shadow-md transition">View Details & Sizing</button>
           </article>
         </div>
 
@@ -344,7 +422,366 @@
     </main>
   </div>
 
+  <!-- Modal Templates -->
+  <div id="modal-mediven-plus" class="modal" onclick="closeModal(event)">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <div class="modal-header sticky top-0 z-10 p-6 flex items-center justify-between rounded-t-3xl">
+        <h2 class="text-2xl font-bold text-white">Mediven Plus Thigh High</h2>
+        <button onclick="closeModal()" class="p-2 hover:bg-white/20 rounded-full transition text-white">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+      <div class="p-8">
+        <div class="modal-grid">
+          <!-- Left: Product Image -->
+          <div class="modal-image-container rounded-2xl p-4 sticky top-4">
+            <img src="./featuredproducts/stockings/mediven-plus-thigh-beige-opentoe-beaded_1.webp" alt="Mediven Plus Thigh High" class="w-full h-auto object-contain rounded-xl" />
+          </div>
+          
+          <!-- Right: Details and Sizing -->
+          <div>
+            <div class="mb-8">
+              <div class="inline-block px-4 py-2 bg-gradient-to-r from-indigo-100 to-violet-100 rounded-full text-indigo-700 text-sm font-semibold mb-4">
+                Product Details
+              </div>
+              <h3 class="text-2xl font-bold bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent mb-4">Premium Compression Support</h3>
+              <p class="text-gray-600 mb-6 leading-relaxed">Medical-grade compression stockings providing therapeutic support. Features comfortable beaded silicone band, open toe design, and graduated compression for circulation.</p>
+              <div class="grid grid-cols-1 gap-3">
+                <div class="feature-badge rounded-xl p-4 flex items-start gap-3">
+                  <svg class="w-5 h-5 text-indigo-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                  </svg>
+                  <span class="text-gray-700 text-sm font-medium">Beaded silicone band for secure fit</span>
+                </div>
+                <div class="feature-badge rounded-xl p-4 flex items-start gap-3">
+                  <svg class="w-5 h-5 text-indigo-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                  </svg>
+                  <span class="text-gray-700 text-sm font-medium">Open toe design for comfort</span>
+                </div>
+                <div class="feature-badge rounded-xl p-4 flex items-start gap-3">
+                  <svg class="w-5 h-5 text-indigo-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                  </svg>
+                  <span class="text-gray-700 text-sm font-medium">Graduated compression technology</span>
+                </div>
+                <div class="feature-badge rounded-xl p-4 flex items-start gap-3">
+                  <svg class="w-5 h-5 text-indigo-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                  </svg>
+                  <span class="text-gray-700 text-sm font-medium">Medical-grade quality</span>
+                </div>
+              </div>
+              <a href="order.html" class="block w-full text-center px-8 py-4 mt-6 bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-2xl font-bold text-lg hover:shadow-2xl hover:scale-[1.02] transition-all">Order Now</a>
+            </div>
+            
+            <div class="border-t border-gray-200 pt-8">
+              <div class="inline-block px-4 py-2 bg-gradient-to-r from-indigo-100 to-violet-100 rounded-full text-indigo-700 text-sm font-semibold mb-4">
+                Sizing Guide
+              </div>
+              <h3 class="text-2xl font-bold bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent mb-4">Find Your Perfect Fit</h3>
+              <div class="modal-image-container rounded-2xl p-4">
+                <img src="./featuredproducts/stockings/Duomed Sizing Chart (2).jpg" alt="Sizing Chart" class="w-full h-auto rounded-xl" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal-mediven-sheer" class="modal" onclick="closeModal(event)">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <div class="modal-header sticky top-0 z-10 p-6 flex items-center justify-between rounded-t-3xl">
+        <h2 class="text-2xl font-bold text-white">Mediven Sheer & Soft Knee Highs 20-30 mmHg</h2>
+        <button onclick="closeModal()" class="p-2 hover:bg-white/20 rounded-full transition text-white">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+      <div class="p-8">
+        <div class="modal-grid">
+          <!-- Left: Product Image -->
+          <div class="modal-image-container rounded-2xl p-4 sticky top-4">
+            <img src="./featuredproducts/stockings/mediven-sheer-and-soft-calf-ebony-closedtoe_936f15e5-b81a-4682-8995-e38fae4893d6.webp" alt="Mediven Sheer & Soft Knee Highs" class="w-full h-auto object-contain rounded-xl" />
+          </div>
+          
+          <!-- Right: Details and Sizing -->
+          <div>
+            <div class="mb-8">
+              <div class="inline-block px-4 py-2 bg-gradient-to-r from-indigo-100 to-violet-100 rounded-full text-indigo-700 text-sm font-semibold mb-4">
+                Product Details
+              </div>
+              <h3 class="text-2xl font-bold bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent mb-4">Sheer Elegance Meets Medical Support</h3>
+              <p class="text-gray-600 mb-6 leading-relaxed">Premium sheer compression knee highs with 20-30 mmHg support. Soft, comfortable fabric with closed toe design. Ideal for daily wear and medical compression needs.</p>
+              <div class="grid grid-cols-1 gap-3">
+                <div class="feature-badge rounded-xl p-4 flex items-start gap-3">
+                  <svg class="w-5 h-5 text-indigo-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                  </svg>
+                  <span class="text-gray-700 text-sm font-medium">20-30 mmHg compression level</span>
+                </div>
+                <div class="feature-badge rounded-xl p-4 flex items-start gap-3">
+                  <svg class="w-5 h-5 text-indigo-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                  </svg>
+                  <span class="text-gray-700 text-sm font-medium">Soft, sheer fabric for elegance</span>
+                </div>
+                <div class="feature-badge rounded-xl p-4 flex items-start gap-3">
+                  <svg class="w-5 h-5 text-indigo-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                  </svg>
+                  <span class="text-gray-700 text-sm font-medium">Closed toe design</span>
+                </div>
+                <div class="feature-badge rounded-xl p-4 flex items-start gap-3">
+                  <svg class="w-5 h-5 text-indigo-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                  </svg>
+                  <span class="text-gray-700 text-sm font-medium">Ideal for daily wear</span>
+                </div>
+              </div>
+              <a href="order.html" class="block w-full text-center px-8 py-4 mt-6 bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-2xl font-bold text-lg hover:shadow-2xl hover:scale-[1.02] transition-all">Order Now</a>
+            </div>
+            
+            <div class="border-t border-gray-200 pt-8">
+              <div class="inline-block px-4 py-2 bg-gradient-to-r from-indigo-100 to-violet-100 rounded-full text-indigo-700 text-sm font-semibold mb-4">
+                Sizing Guide
+              </div>
+              <h3 class="text-2xl font-bold bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent mb-4">Find Your Perfect Fit</h3>
+              <div class="modal-image-container rounded-2xl p-4">
+                <img src="./featuredproducts/stockings/Duomed Sizing Chart (2).jpg" alt="Sizing Chart" class="w-full h-auto rounded-xl" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal-sigvaris" class="modal" onclick="closeModal(event)">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <div class="modal-header sticky top-0 z-10 p-6 flex items-center justify-between rounded-t-3xl">
+        <h2 class="text-2xl font-bold text-white">Sigvaris Thigh High</h2>
+        <button onclick="closeModal()" class="p-2 hover:bg-white/20 rounded-full transition text-white">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+      <div class="p-8">
+        <div class="modal-grid">
+          <!-- Left: Product Image -->
+          <div class="modal-image-container rounded-2xl p-4 sticky top-4">
+            <img src="./featuredproducts/stockings/sigravis thigh high.jpg" alt="Sigvaris Thigh High" class="w-full h-auto object-contain rounded-xl" />
+          </div>
+          
+          <!-- Right: Details and Sizing -->
+          <div>
+            <div class="mb-8">
+              <div class="inline-block px-4 py-2 bg-gradient-to-r from-indigo-100 to-violet-100 rounded-full text-indigo-700 text-sm font-semibold mb-4">
+                Product Details
+              </div>
+              <h3 class="text-2xl font-bold bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent mb-4">Superior Swiss Engineering</h3>
+              <p class="text-gray-600 mb-6 leading-relaxed">Premium compression thigh highs designed for superior support and comfort. Features graduated compression technology for improved circulation and all-day wearability.</p>
+              <div class="grid grid-cols-1 gap-3">
+                <div class="feature-badge rounded-xl p-4 flex items-start gap-3">
+                  <svg class="w-5 h-5 text-indigo-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                  </svg>
+                  <span class="text-gray-700 text-sm font-medium">Graduated compression technology</span>
+                </div>
+                <div class="feature-badge rounded-xl p-4 flex items-start gap-3">
+                  <svg class="w-5 h-5 text-indigo-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                  </svg>
+                  <span class="text-gray-700 text-sm font-medium">Superior support and comfort</span>
+                </div>
+                <div class="feature-badge rounded-xl p-4 flex items-start gap-3">
+                  <svg class="w-5 h-5 text-indigo-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                  </svg>
+                  <span class="text-gray-700 text-sm font-medium">All-day wearability</span>
+                </div>
+                <div class="feature-badge rounded-xl p-4 flex items-start gap-3">
+                  <svg class="w-5 h-5 text-indigo-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                  </svg>
+                  <span class="text-gray-700 text-sm font-medium">Premium quality construction</span>
+                </div>
+              </div>
+              <a href="order.html" class="block w-full text-center px-8 py-4 mt-6 bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-2xl font-bold text-lg hover:shadow-2xl hover:scale-[1.02] transition-all">Order Now</a>
+            </div>
+            
+            <div class="border-t border-gray-200 pt-8">
+              <div class="inline-block px-4 py-2 bg-gradient-to-r from-indigo-100 to-violet-100 rounded-full text-indigo-700 text-sm font-semibold mb-4">
+                Sizing Guide
+              </div>
+              <h3 class="text-2xl font-bold bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent mb-4">Find Your Perfect Fit</h3>
+              <div class="modal-image-container rounded-2xl p-4">
+                <img src="./featuredproducts/stockings/Duomed Sizing Chart (2).jpg" alt="Sizing Chart" class="w-full h-auto rounded-xl" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal-juzo" class="modal" onclick="closeModal(event)">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <div class="modal-header sticky top-0 z-10 p-6 flex items-center justify-between rounded-t-3xl">
+        <h2 class="text-2xl font-bold text-white">Juzo Soft Thigh High</h2>
+        <button onclick="closeModal()" class="p-2 hover:bg-white/20 rounded-full transition text-white">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+      <div class="p-8">
+        <div class="modal-grid">
+          <!-- Left: Product Image -->
+          <div class="modal-image-container rounded-2xl p-4 sticky top-4">
+            <img src="./featuredproducts/stockings/juzo soft thigh high.webp" alt="Juzo Soft Thigh High" class="w-full h-auto object-contain rounded-xl" />
+          </div>
+          
+          <!-- Right: Details and Sizing -->
+          <div>
+            <div class="mb-8">
+              <div class="inline-block px-4 py-2 bg-gradient-to-r from-indigo-100 to-violet-100 rounded-full text-indigo-700 text-sm font-semibold mb-4">
+                Product Details
+              </div>
+              <h3 class="text-2xl font-bold bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent mb-4">Ultra-Soft Therapeutic Comfort</h3>
+              <p class="text-gray-600 mb-6 leading-relaxed">Ultra-soft compression thigh highs offering therapeutic support with exceptional comfort. Features silicone top band for secure fit and graduated compression for optimal leg health.</p>
+              <div class="grid grid-cols-1 gap-3">
+                <div class="feature-badge rounded-xl p-4 flex items-start gap-3">
+                  <svg class="w-5 h-5 text-indigo-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                  </svg>
+                  <span class="text-gray-700 text-sm font-medium">Ultra-soft fabric</span>
+                </div>
+                <div class="feature-badge rounded-xl p-4 flex items-start gap-3">
+                  <svg class="w-5 h-5 text-indigo-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                  </svg>
+                  <span class="text-gray-700 text-sm font-medium">Silicone top band for secure fit</span>
+                </div>
+                <div class="feature-badge rounded-xl p-4 flex items-start gap-3">
+                  <svg class="w-5 h-5 text-indigo-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                  </svg>
+                  <span class="text-gray-700 text-sm font-medium">Graduated compression</span>
+                </div>
+                <div class="feature-badge rounded-xl p-4 flex items-start gap-3">
+                  <svg class="w-5 h-5 text-indigo-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                  </svg>
+                  <span class="text-gray-700 text-sm font-medium">Exceptional comfort</span>
+                </div>
+              </div>
+              <a href="order.html" class="block w-full text-center px-8 py-4 mt-6 bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-2xl font-bold text-lg hover:shadow-2xl hover:scale-[1.02] transition-all">Order Now</a>
+            </div>
+            
+            <div class="border-t border-gray-200 pt-8">
+              <div class="inline-block px-4 py-2 bg-gradient-to-r from-indigo-100 to-violet-100 rounded-full text-indigo-700 text-sm font-semibold mb-4">
+                Sizing Guide
+              </div>
+              <h3 class="text-2xl font-bold bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent mb-4">Find Your Perfect Fit</h3>
+              <div class="modal-image-container rounded-2xl p-4">
+                <img src="./featuredproducts/stockings/Duomed Sizing Chart (2).jpg" alt="Sizing Chart" class="w-full h-auto rounded-xl" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal-jobst" class="modal" onclick="closeModal(event)">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <div class="modal-header sticky top-0 z-10 p-6 flex items-center justify-between rounded-t-3xl">
+        <h2 class="text-2xl font-bold text-white">JOBST Classic RAL Class 3</h2>
+        <button onclick="closeModal()" class="p-2 hover:bg-white/20 rounded-full transition text-white">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+      <div class="p-8">
+        <div class="modal-grid">
+          <!-- Left: Product Image -->
+          <div class="modal-image-container rounded-2xl p-4 sticky top-4">
+            <img src="./featuredproducts/stockings/JOBST Classic RAL Class 3, Compression Stockings, Sand.webp" alt="JOBST Classic RAL Class 3" class="w-full h-auto object-contain rounded-xl" />
+          </div>
+          
+          <!-- Right: Details and Sizing -->
+          <div>
+            <div class="mb-8">
+              <div class="inline-block px-4 py-2 bg-gradient-to-r from-indigo-100 to-violet-100 rounded-full text-indigo-700 text-sm font-semibold mb-4">
+                Product Details
+              </div>
+              <h3 class="text-2xl font-bold bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent mb-4">Medical-Grade Class 3 Compression</h3>
+              <p class="text-gray-600 mb-6 leading-relaxed">Medical-grade Class 3 compression stockings in sand color. Provides strong therapeutic compression for advanced venous conditions with durable RAL quality construction.</p>
+              <div class="grid grid-cols-1 gap-3">
+                <div class="feature-badge rounded-xl p-4 flex items-start gap-3">
+                  <svg class="w-5 h-5 text-indigo-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                  </svg>
+                  <span class="text-gray-700 text-sm font-medium">Class 3 compression level</span>
+                </div>
+                <div class="feature-badge rounded-xl p-4 flex items-start gap-3">
+                  <svg class="w-5 h-5 text-indigo-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                  </svg>
+                  <span class="text-gray-700 text-sm font-medium">RAL quality construction</span>
+                </div>
+                <div class="feature-badge rounded-xl p-4 flex items-start gap-3">
+                  <svg class="w-5 h-5 text-indigo-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                  </svg>
+                  <span class="text-gray-700 text-sm font-medium">For advanced venous conditions</span>
+                </div>
+                <div class="feature-badge rounded-xl p-4 flex items-start gap-3">
+                  <svg class="w-5 h-5 text-indigo-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                  </svg>
+                  <span class="text-gray-700 text-sm font-medium">Durable medical-grade material</span>
+                </div>
+              </div>
+              <a href="order.html" class="block w-full text-center px-8 py-4 mt-6 bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-2xl font-bold text-lg hover:shadow-2xl hover:scale-[1.02] transition-all">Order Now</a>
+            </div>
+            
+            <div class="border-t border-gray-200 pt-8">
+              <div class="inline-block px-4 py-2 bg-gradient-to-r from-indigo-100 to-violet-100 rounded-full text-indigo-700 text-sm font-semibold mb-4">
+                Sizing Guide
+              </div>
+              <h3 class="text-2xl font-bold bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent mb-4">Find Your Perfect Fit</h3>
+              <div class="modal-image-container rounded-2xl p-4">
+                <img src="./featuredproducts/stockings/Duomed Sizing Chart (2).jpg" alt="Sizing Chart" class="w-full h-auto rounded-xl" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script>
+    // Modal functions
+    function openModal(id) {
+      document.getElementById('modal-' + id).classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal(event) {
+      if (!event || event.target.classList.contains('modal')) {
+        document.querySelectorAll('.modal').forEach(m => m.classList.remove('active'));
+        document.body.style.overflow = '';
+      }
+    }
+
     // Mobile menu toggle
     const menuBtn = document.getElementById('menuBtn');
     menuBtn?.addEventListener('click', () => {
