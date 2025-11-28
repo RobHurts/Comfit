@@ -10,18 +10,186 @@
   <style>
     :root { --muted:#6b7280; --accent:#7c3aed; }
     .sidebar { min-width:220px; }
-    .product-grid { display:grid; grid-template-columns: repeat(auto-fill,minmax(260px,1fr)); gap:1.5rem; }
-    .product-item { display: flex; flex-direction: column; height: 100%; }
-    .product-item .card-img { flex: 0 0 auto; }
-    .product-item h3 { flex: 0 0 auto; }
-    .product-item p { flex: 1 1 auto; }
-    .product-item button, .product-item a:last-child { flex: 0 0 auto; margin-top: auto; }
-    .card-img { height:200px; object-fit:cover; width:100%; border-radius:0.75rem; }
+    .product-grid { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+      gap: 1.5rem; 
+      align-items: stretch;
+    }
+    .product-item { 
+      display: flex; 
+      flex-direction: column; 
+      height: 100%; 
+      min-height: 400px;
+    }
+    .product-item .card-img { 
+      flex: 0 0 auto; 
+      height: 200px;
+      object-fit: cover;
+      width: 100%;
+      border-radius: 0.75rem;
+    }
+    .product-item h3 { 
+      flex: 0 0 auto; 
+      min-height: 2.5rem;
+    }
+    .product-item p { 
+      flex: 1 1 auto; 
+      display: flex;
+      align-items: flex-start;
+    }
+    .product-item button, .product-item a:last-child { 
+      flex: 0 0 auto; 
+      margin-top: auto; 
+    }
+    
+    /* Category Filter Animations */
+    .product-item {
+      opacity: 1;
+      transform: translateY(0);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .product-item.filtering {
+      opacity: 0;
+      transform: translateY(20px);
+      pointer-events: none;
+    }
+    
+    .product-item.hidden {
+      display: none;
+    }
+    
+    .product-item:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    }
+    
+    .product-item:hover .card-img {
+      transform: scale(1.05);
+      transition: transform 0.3s ease;
+    }
+    
+    .product-item .card-img {
+      transition: transform 0.3s ease;
+    }
+    
+    /* Filter Button Animations */
+    .filter-btn {
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .filter-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
+      transition: left 0.5s ease;
+    }
+    
+    .filter-btn:hover::before {
+      left: 100%;
+    }
+    
+    .filter-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+    
     .filter-btn.active { 
       background: linear-gradient(135deg, #7c3aed 0%, #a78bfa 100%);
       color:white; 
       border-color: transparent;
       box-shadow: 0 2px 8px rgba(124, 58, 237, 0.3);
+    }
+    
+    /* Sidebar Navigation Animations */
+    .sidebar nav ul li a {
+      position: relative;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow: hidden;
+    }
+    
+    .sidebar nav ul li a::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.1), transparent);
+      transition: left 0.5s ease;
+    }
+    
+    .sidebar nav ul li a:hover::before {
+      left: 100%;
+    }
+    
+    .sidebar nav ul li a:hover {
+      transform: translateX(8px);
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.05));
+      box-shadow: 0 4px 12px rgba(99, 102, 241, 0.15);
+    }
+    
+    .sidebar nav ul li a:active {
+      transform: translateX(4px) scale(0.98);
+    }
+    
+    /* Page Transition Overlay */
+    .page-transition-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .page-transition-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .page-transition-overlay .spinner {
+      width: 50px;
+      height: 50px;
+      border: 3px solid rgba(255, 255, 255, 0.3);
+      border-top: 3px solid white;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    /* Bottom CTA Buttons */
+    .sidebar .mt-auto a {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .sidebar .mt-auto a:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    }
+    
+    .sidebar .mt-auto a:active {
+      transform: translateY(0px);
     }
     .product-item {
       transition: all 0.3s ease;
@@ -160,6 +328,11 @@
   </style>
 </head>
 <body class="antialiased bg-gradient-to-br from-gray-50 via-indigo-50/20 to-violet-50/20 text-gray-900">
+  <!-- Page Transition Overlay -->
+  <div class="page-transition-overlay" id="pageTransition">
+    <div class="spinner"></div>
+  </div>
+
   <div class="min-h-screen flex">
     <!-- Sidebar -->
     <aside class="sidebar hidden md:flex flex-col gap-6 p-6 bg-white/90 shadow-lg fixed h-screen z-50">
@@ -797,24 +970,122 @@
 
     filterBtns.forEach(btn => {
       btn.addEventListener('click', () => {
-        filterBtns.forEach(b => b.classList.remove('active'));
+        // Prevent multiple clicks during animation
+        if (btn.disabled) return;
+        
+        // Disable all buttons during transition
+        filterBtns.forEach(b => {
+          b.disabled = true;
+          b.classList.remove('active');
+        });
+        
         btn.classList.add('active');
         currentCat = btn.dataset.cat;
+        
         applyFilters();
+        
+        // Re-enable buttons after animation completes
+        setTimeout(() => {
+          filterBtns.forEach(b => b.disabled = false);
+        }, 600);
       });
     });
 
     searchBox?.addEventListener('input', applyFilters);
 
+    // Page Transition Effects
+    const pageTransition = document.getElementById('pageTransition');
+    const sidebarLinks = document.querySelectorAll('.sidebar nav a, .sidebar .mt-auto a');
+    
+    sidebarLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        // Don't apply transition to dropdown toggle or current page
+        if (this.getAttribute('href') === '#' || 
+            this.getAttribute('href') === window.location.pathname ||
+            this.getAttribute('href') === window.location.pathname.split('/').pop()) {
+          return;
+        }
+        
+        e.preventDefault();
+        const targetUrl = this.getAttribute('href');
+        
+        // Add ripple effect to clicked link
+        const ripple = document.createElement('span');
+        const rect = this.getBoundingClientRect();
+        const size = Math.max(rect.width, rect.height);
+        const x = e.clientX - rect.left - size / 2;
+        const y = e.clientY - rect.top - size / 2;
+        
+        ripple.style.cssText = `
+          position: absolute;
+          width: ${size}px;
+          height: ${size}px;
+          left: ${x}px;
+          top: ${y}px;
+          background: radial-gradient(circle, rgba(99, 102, 241, 0.3) 0%, transparent 70%);
+          border-radius: 50%;
+          transform: scale(0);
+          animation: ripple 0.6s linear;
+          pointer-events: none;
+          z-index: 0;
+        `;
+        
+        const style = document.createElement('style');
+        style.textContent = `
+          @keyframes ripple {
+            to {
+              transform: scale(4);
+              opacity: 0;
+            }
+          }
+        `;
+        
+        document.head.appendChild(style);
+        this.style.position = 'relative';
+        this.appendChild(ripple);
+        
+        // Show transition overlay
+        pageTransition.classList.add('active');
+        
+        // Navigate after animation
+        setTimeout(() => {
+          window.location.href = targetUrl;
+        }, 500);
+      });
+    });
+
     function applyFilters() {
       const query = searchBox?.value?.toLowerCase() || '';
+      
+      // First, add filtering class to all products for fade-out animation
       products.forEach(p => {
-        const cat = p.dataset.cat;
-        const text = p.textContent.toLowerCase();
-        const matchesCat = currentCat === 'all' || cat === currentCat;
-        const matchesSearch = !query || text.includes(query);
-        p.style.display = (matchesCat && matchesSearch) ? 'block' : 'none';
+        p.classList.add('filtering');
       });
+      
+      setTimeout(() => {
+        products.forEach(p => {
+          const cat = p.dataset.cat;
+          const text = p.textContent.toLowerCase();
+          const matchesCat = currentCat === 'all' || cat === currentCat;
+          const matchesSearch = !query || text.includes(query);
+          
+          if (matchesCat && matchesSearch) {
+            p.classList.remove('filtering', 'hidden');
+            p.style.display = 'block';
+          } else {
+            p.classList.add('hidden');
+            p.style.display = 'none';
+          }
+        });
+        
+        // Stagger the fade-in animation for visible products
+        const visibleProducts = Array.from(products).filter(p => !p.classList.contains('hidden'));
+        visibleProducts.forEach((p, index) => {
+          setTimeout(() => {
+            p.classList.remove('filtering');
+          }, index * 50);
+        });
+      }, 200);
     }
   </script>
 </body>

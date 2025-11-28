@@ -40,7 +40,7 @@
             opacity: 0;
             visibility: hidden;
             transform: translateX(-10px);
-            transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), visibility 0s 0.3s;
+            transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), visibility 0s 0.5s;
             pointer-events: none;
             padding: 0.5rem;
         }
@@ -49,6 +49,92 @@
             opacity: 1;
             visibility: visible;
             transform: translateX(0);
+            pointer-events: auto;
+            transition-delay: 0s;
+        }
+        
+        /* Sidebar Navigation Animations */
+        .sidebar nav ul li a {
+            position: relative;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+        }
+        
+        .sidebar nav ul li a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .sidebar nav ul li a:hover::before {
+            left: 100%;
+        }
+        
+        .sidebar nav ul li a:hover {
+            transform: translateX(8px);
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.05));
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.15);
+        }
+        
+        .sidebar nav ul li a:active {
+            transform: translateX(4px) scale(0.98);
+        }
+        
+        /* Page Transition Overlay */
+        .page-transition-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .page-transition-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .page-transition-overlay .spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-top: 3px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Bottom CTA Buttons */
+        .sidebar .mt-auto a {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .sidebar .mt-auto a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .sidebar .mt-auto a:active {
+            transform: translateY(0px);
             pointer-events: auto;
             transition-delay: 0s;
         }
@@ -82,6 +168,11 @@
 </head>
 
 <body class="antialiased bg-gray-50 text-gray-900">
+    <!-- Page Transition Overlay -->
+    <div class="page-transition-overlay" id="pageTransition">
+        <div class="spinner"></div>
+    </div>
+
     <div class="min-h-screen flex">
         <!-- Sidebar -->
         <aside class="sidebar hidden md:flex flex-col gap-6 p-6 bg-white/90 shadow-lg fixed h-screen z-50">
@@ -386,6 +477,67 @@
         const sidebar = document.querySelector('aside');
         menuBtn?.addEventListener('click', () => {
             sidebar?.classList.toggle('hidden');
+        });
+
+        // Page Transition Effects
+        const pageTransition = document.getElementById('pageTransition');
+        const sidebarLinks = document.querySelectorAll('.sidebar nav a, .sidebar .mt-auto a');
+        
+        sidebarLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                // Don't apply transition to dropdown toggle or current page
+                if (this.getAttribute('href') === '#' || 
+                    this.getAttribute('href') === window.location.pathname ||
+                    this.getAttribute('href') === window.location.pathname.split('/').pop()) {
+                    return;
+                }
+                
+                e.preventDefault();
+                const targetUrl = this.getAttribute('href');
+                
+                // Add ripple effect to clicked link
+                const ripple = document.createElement('span');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                
+                ripple.style.cssText = `
+                    position: absolute;
+                    width: ${size}px;
+                    height: ${size}px;
+                    left: ${x}px;
+                    top: ${y}px;
+                    background: radial-gradient(circle, rgba(99, 102, 241, 0.3) 0%, transparent 70%);
+                    border-radius: 50%;
+                    transform: scale(0);
+                    animation: ripple 0.6s linear;
+                    pointer-events: none;
+                    z-index: 0;
+                `;
+                
+                const style = document.createElement('style');
+                style.textContent = `
+                    @keyframes ripple {
+                        to {
+                            transform: scale(4);
+                            opacity: 0;
+                        }
+                    }
+                `;
+                
+                document.head.appendChild(style);
+                this.style.position = 'relative';
+                this.appendChild(ripple);
+                
+                // Show transition overlay
+                pageTransition.classList.add('active');
+                
+                // Navigate after animation
+                setTimeout(() => {
+                    window.location.href = targetUrl;
+                }, 500);
+            });
         });
 
         // Swiper initialization
