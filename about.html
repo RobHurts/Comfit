@@ -163,12 +163,187 @@
         .nav-dropdown:hover > a svg {
             transform: translateX(3px);
         }
+        
+        /* Promotional Popup Modal Styles */
+        .promo-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+        }
+        .promo-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .promo-modal-content {
+            position: relative;
+            max-width: 600px;
+            max-height: 90vh;
+            width: 90%;
+            background: white;
+            border-radius: 1.5rem;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            transform: scale(0.9) translateY(20px);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .promo-modal.active .promo-modal-content {
+            transform: scale(1) translateY(0);
+        }
+        .promo-modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+        .promo-modal-close:hover {
+            background: #7c3aed;
+            transform: rotate(90deg) scale(1.1);
+        }
+        .promo-modal-close::before,
+        .promo-modal-close::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 2px;
+            background: #374151;
+            transition: background 0.3s ease;
+        }
+        .promo-modal-close:hover::before,
+        .promo-modal-close:hover::after {
+            background: white;
+        }
+        .promo-modal-close::before {
+            transform: rotate(45deg);
+        }
+        .promo-modal-close::after {
+            transform: rotate(-45deg);
+        }
+        .promo-modal img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        .promo-dots {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+        .promo-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: white;
+            opacity: 0.5;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .promo-dot.active {
+            opacity: 1;
+            background: #7c3aed;
+            transform: scale(1.3);
+        }
+        .promo-nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+        .promo-nav-btn:hover {
+            background: #7c3aed;
+            transform: translateY(-50%) scale(1.1);
+        }
+        .promo-nav-btn svg {
+            width: 24px;
+            height: 24px;
+            fill: #374151;
+            transition: fill 0.3s ease;
+        }
+        .promo-nav-btn:hover svg {
+            fill: white;
+        }
+        .promo-prev {
+            left: 20px;
+        }
+        .promo-next {
+            right: 20px;
+        }
+        @media (max-width: 768px) {
+            .promo-modal-content {
+                max-width: 420px;
+                width: 90%;
+                max-height: 85vh;
+            }
+            .promo-nav-btn {
+                width: 40px;
+                height: 40px;
+            }
+            .promo-prev {
+                left: 10px;
+            }
+            .promo-next {
+                right: 10px;
+            }
+        }
     </style>
 </head>
 <body class="antialiased bg-gradient-to-br from-gray-50 via-indigo-50/20 to-violet-50/20 text-gray-900">
   <!-- Page Transition Overlay -->
   <div class="page-transition-overlay" id="pageTransition">
     <div class="spinner"></div>
+  </div>
+
+  <!-- Promotional Popup Modal -->
+  <div class="promo-modal" id="promoModal">
+    <div class="promo-modal-content">
+      <div class="promo-modal-close" id="closePromoModal"></div>
+      <img id="promoImage" src="" alt="Promotional Ad">
+      <button class="promo-nav-btn promo-prev" id="promoPrev">
+        <svg viewBox="0 0 24 24">
+          <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+        </svg>
+      </button>
+      <button class="promo-nav-btn promo-next" id="promoNext">
+        <svg viewBox="0 0 24 24">
+          <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+        </svg>
+      </button>
+      <div class="promo-dots" id="promoDots"></div>
+    </div>
   </div>
 
   <div class="min-h-screen flex">
@@ -426,6 +601,91 @@
             }, 500);
           });
         });
+
+        // Promotional Popup System
+        const promoModal = document.getElementById('promoModal');
+        const closePromoModal = document.getElementById('closePromoModal');
+        const promoImage = document.getElementById('promoImage');
+        const promoPrev = document.getElementById('promoPrev');
+        const promoNext = document.getElementById('promoNext');
+        const promoDots = document.getElementById('promoDots');
+        
+        const promoAds = [
+            './ads/Comfit Ad 1.jpg',
+            './ads/Comfit Ad 3 v2.jpg',
+            './ads/Comfit Ad.jpg'
+        ];
+        
+        let currentPromoIndex = 0;
+        
+        function updatePromoAd(index) {
+            currentPromoIndex = index;
+            promoImage.src = promoAds[currentPromoIndex];
+            
+            document.querySelectorAll('.promo-dot').forEach((dot, i) => {
+                dot.classList.toggle('active', i === currentPromoIndex);
+            });
+        }
+        
+        function showNextPromo() {
+            currentPromoIndex = (currentPromoIndex + 1) % promoAds.length;
+            updatePromoAd(currentPromoIndex);
+        }
+        
+        function showPrevPromo() {
+            currentPromoIndex = (currentPromoIndex - 1 + promoAds.length) % promoAds.length;
+            updatePromoAd(currentPromoIndex);
+        }
+        
+        // Create dots
+        promoAds.forEach((ad, index) => {
+            const dot = document.createElement('div');
+            dot.className = 'promo-dot';
+            if (index === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => updatePromoAd(index));
+            promoDots.appendChild(dot);
+        });
+        
+        // Event listeners
+        closePromoModal.addEventListener('click', () => {
+            promoModal.classList.remove('active');
+        });
+        
+        promoModal.addEventListener('click', (e) => {
+            if (e.target === promoModal) {
+                promoModal.classList.remove('active');
+            }
+        });
+        
+        promoPrev.addEventListener('click', showPrevPromo);
+        promoNext.addEventListener('click', showNextPromo);
+        
+        document.addEventListener('keydown', (e) => {
+            if (!promoModal.classList.contains('active')) return;
+            if (e.key === 'Escape') promoModal.classList.remove('active');
+            if (e.key === 'ArrowLeft') showPrevPromo();
+            if (e.key === 'ArrowRight') showNextPromo();
+        });
+        
+        // Auto-show popup after 3 seconds with cooldown
+        const POPUP_COOLDOWN_KEY = 'lastPromoPopup';
+        const POPUP_COOLDOWN_HOURS = 24;
+        
+        function shouldShowPopup() {
+            const lastShown = localStorage.getItem(POPUP_COOLDOWN_KEY);
+            if (!lastShown) return true;
+            
+            const hoursSinceLastShown = (Date.now() - parseInt(lastShown)) / (1000 * 60 * 60);
+            return hoursSinceLastShown >= POPUP_COOLDOWN_HOURS;
+        }
+        
+        if (shouldShowPopup()) {
+            setTimeout(() => {
+                updatePromoAd(0);
+                promoModal.classList.add('active');
+                localStorage.setItem(POPUP_COOLDOWN_KEY, Date.now().toString());
+            }, 3000);
+        }
     </script>
 </body>
 </html>
