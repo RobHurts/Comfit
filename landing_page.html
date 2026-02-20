@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comfit Surgical Supplies — Breast Pumps & Nursing Supplies | Insurance Covered | Brooklyn, NY</title>
+    <meta name="description" content="Get your breast pump through insurance at no cost! Comfit Surgical Supplies offers Ardo Melia, Spectra, Motif & more top breast pumps. We handle all insurance paperwork. Brooklyn, NY.">
+    <meta name="keywords" content="breast pumps, Ardo Melia breast pump, insurance covered breast pump, free breast pump, nursing pump, Spectra breast pump, Motif breast pump, Zomee breast pump, breast pump through insurance, DME provider Brooklyn">
+    <meta name="author" content="Comfit Surgical Supplies">
+    <meta property="og:title" content="Comfit Surgical Supplies — Get Your Breast Pump Through Insurance">
+    <meta property="og:description" content="Top breast pumps like Ardo Melia, Spectra & more — covered by your insurance. We handle everything. Brooklyn, NY.">
+    <meta property="og:image" content="./images/Untitled design (81).png">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="./images/Untitled design (81).png">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root { --accent: #7c3aed; }
+
+        /* Smooth scroll */
+        html { scroll-behavior: smooth; }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #7c3aed 0%, #a78bfa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Floating CTA on mobile */
+        .floating-cta {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 999;
+            background: white;
+            padding: 0.75rem 1rem;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.12);
+            display: none;
+        }
+        @media (max-width: 768px) {
+            .floating-cta { display: flex; gap: 0.5rem; }
+        }
+
+        /* Hero animated gradient */
+        .hero-bg {
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 40%, #a78bfa 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -30%;
+            width: 80%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
+            animation: float 8s ease-in-out infinite;
+        }
+        .hero-bg::after {
+            content: '';
+            position: absolute;
+            bottom: -40%;
+            left: -20%;
+            width: 60%;
+            height: 160%;
+            background: radial-gradient(circle, rgba(167,139,250,0.2) 0%, transparent 70%);
+            animation: float 10s ease-in-out infinite reverse;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(3deg); }
+        }
+
+        /* Scroll-triggered fade-in */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Card hover lift */
+        .card-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-lift:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px -8px rgba(124, 58, 237, 0.18);
+        }
+
+        /* Pulse animation for CTA */
+        .pulse-ring {
+            animation: pulse-ring 2s ease-out infinite;
+        }
+        @keyframes pulse-ring {
+            0% { box-shadow: 0 0 0 0 rgba(124, 58, 237, 0.4); }
+            70% { box-shadow: 0 0 0 12px rgba(124, 58, 237, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(124, 58, 237, 0); }
+        }
+
+        /* Insurance logos scroll */
+        .logo-scroll {
+            display: flex;
+            gap: 2.5rem;
+            animation: scroll-logos 25s linear infinite;
+        }
+        @keyframes scroll-logos {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Counter animation */
+        .counter { font-variant-numeric: tabular-nums; }
+    </style>
+</head>
+<body class="antialiased bg-white text-gray-900">
+
+    <!-- ========== STICKY HEADER (Mobile-friendly) ========== -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-sm">
+        <div class="max-w-7xl mx-auto flex items-center justify-between px-4 py-3 md:px-8">
+            <a href="index.html" class="flex items-center gap-2">
+                <img src="./images/Untitled design (81).png" alt="Comfit Surgical Supplies" class="w-10 h-10 rounded-lg object-contain">
+                <div>
+                    <span class="font-bold text-lg leading-tight block">Comfit</span>
+                    <span class="text-[10px] text-gray-500 leading-tight block">Surgical Supplies</span>
+                </div>
+            </a>
+            <div class="flex items-center gap-2">
+                <a href="tel:+17184008370" class="hidden sm:inline-flex items-center gap-1.5 text-sm text-gray-600 hover:text-indigo-600 transition">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                    718-400-8370
+                </a>
+                <a href="contact.html" class="inline-flex items-center gap-1.5 px-5 py-2.5 bg-gradient-to-r from-indigo-600 to-violet-600 text-white text-sm font-semibold rounded-full shadow-md hover:shadow-lg hover:scale-105 transition-all">
+                    Contact Us
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ========== HERO SECTION ========== -->
+    <section class="hero-bg min-h-[90vh] md:min-h-[85vh] flex items-center relative">
+        <div class="max-w-7xl mx-auto px-4 md:px-8 py-16 md:py-24 relative z-10 w-full">
+            <div class="max-w-3xl">
+                <div class="inline-flex items-center gap-2 px-4 py-2 bg-white/15 backdrop-blur-sm rounded-full text-white text-sm mb-6">
+                    <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+                    #1 Breast Pump Provider — Brooklyn, NY
+                </div>
+
+                <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-[1.1] mb-6">
+                    Get Your <br class="hidden sm:block">
+                    <span class="text-indigo-200">Breast Pump</span><br>
+                    Through Insurance
+                </h1>
+
+                <p class="text-lg md:text-xl text-indigo-100 mb-8 max-w-2xl leading-relaxed">
+                    Comfit Surgical Supplies makes it easy to get a top-quality breast pump — like the <strong>Ardo Melia</strong>, Spectra, Motif, and more — at little to no cost through your insurance. We handle all the paperwork so you can focus on what matters most.
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-3 mb-12">
+                    <a href="contact.html" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-indigo-600 rounded-full font-bold text-lg shadow-xl hover:shadow-2xl hover:scale-105 transition-all pulse-ring">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+                        Contact Us Today
+                    </a>
+                    <a href="tel:+17184008370" class="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-white/40 text-white rounded-full font-semibold text-lg hover:bg-white/10 backdrop-blur-sm transition-all">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                        Call 718-400-8370
+                    </a>
+                </div>
+
+                <!-- Trust badges -->
+                <div class="grid grid-cols-3 gap-3 max-w-md">
+                    <div class="bg-white/10 backdrop-blur-sm rounded-xl px-3 py-3 text-center">
+                        <div class="text-2xl md:text-3xl font-extrabold text-white counter" data-target="1000">1000+</div>
+                        <div class="text-xs text-indigo-200">Moms Served</div>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur-sm rounded-xl px-3 py-3 text-center">
+                        <div class="text-2xl md:text-3xl font-extrabold text-white counter" data-target="25">25+</div>
+                        <div class="text-xs text-indigo-200">Insurance Partners</div>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur-sm rounded-xl px-3 py-3 text-center">
+                        <div class="text-2xl md:text-3xl font-extrabold text-white">$0</div>
+                        <div class="text-xs text-indigo-200">Out-of-Pocket*</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Decorative wave -->
+        <div class="absolute bottom-0 left-0 right-0">
+            <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full">
+                <path d="M0 80V30C240 60 480 0 720 30C960 60 1200 0 1440 30V80H0Z" fill="white"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- ========== FEATURED: ARDO MELIA ========== -->
+    <section class="py-16 md:py-24 px-4 md:px-8" id="featured">
+        <div class="max-w-7xl mx-auto">
+            <div class="bg-gradient-to-br from-violet-50 to-indigo-50 rounded-3xl border border-violet-200 shadow-lg overflow-hidden fade-in">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
+                    <!-- Image side -->
+                    <div class="bg-gradient-to-br from-violet-100 to-indigo-100 flex items-center justify-center p-8 md:p-12">
+                        <img src="./featuredproducts/pumps/ardo melia.jpg" alt="Ardo Melia Breast Pump" class="max-h-[360px] object-contain drop-shadow-xl">
+                    </div>
+                    <!-- Text side -->
+                    <div class="p-8 md:p-12 flex flex-col justify-center">
+                        <div class="inline-block px-3 py-1 bg-violet-600 text-white rounded-full text-xs font-bold mb-4 w-fit">⭐ Featured Pump</div>
+                        <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">Ardo Melia</h2>
+                        <p class="text-gray-600 text-lg leading-relaxed mb-6">
+                            The Ardo Melia is a hospital-grade double electric breast pump designed for maximum comfort and efficiency. Its whisper-quiet motor, adjustable suction, and soft-touch breast shields make expressing milk a breeze — so you can pump with confidence at home or on the go.
+                        </p>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-start gap-3 text-gray-700"><svg class="w-5 h-5 text-violet-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Hospital-grade double electric pump</li>
+                            <li class="flex items-start gap-3 text-gray-700"><svg class="w-5 h-5 text-violet-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Whisper-quiet motor for discreet pumping</li>
+                            <li class="flex items-start gap-3 text-gray-700"><svg class="w-5 h-5 text-violet-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Adjustable suction &amp; soft-touch shields</li>
+                            <li class="flex items-start gap-3 text-gray-700"><svg class="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><strong>Covered by most insurance plans — often at $0 cost</strong></li>
+                        </ul>
+                        <a href="contact.html" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-violet-600 to-indigo-600 text-white rounded-full font-bold shadow-lg hover:shadow-xl hover:scale-105 transition-all w-fit">
+                            Get Your Ardo Melia Today
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== BREAST PUMP BRANDS ========== -->
+    <section class="py-16 md:py-24 px-4 md:px-8 bg-gradient-to-br from-gray-50 to-indigo-50/30" id="pumps">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-14 fade-in">
+                <div class="inline-block px-4 py-2 bg-indigo-100 text-indigo-700 rounded-full text-sm font-semibold mb-4">Our Breast Pump Selection</div>
+                <h2 class="text-3xl md:text-5xl font-extrabold mb-4">Top Breast Pumps, <span class="gradient-text">Covered by Insurance</span></h2>
+                <p class="text-gray-600 max-w-2xl mx-auto text-lg">We carry all the leading breast pump brands. Most are fully covered by your insurance — we verify your benefits and handle the paperwork for you.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                <!-- Card 1: Ardo Melia (Hero card) -->
+                <div class="card-lift bg-gradient-to-br from-white to-violet-50/60 p-7 rounded-2xl border-2 border-violet-300 shadow-md fade-in relative">
+                    <div class="absolute top-4 right-4 px-2.5 py-1 bg-violet-600 text-white text-xs font-bold rounded-full">Most Popular</div>
+                    <img src="./featuredproducts/pumps/ardo melia.jpg" alt="Ardo Melia" class="w-full h-44 object-contain mb-5 rounded-xl bg-violet-50 p-3">
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Ardo Melia</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Hospital-grade double electric pump with whisper-quiet motor, adjustable suction, and ultra-comfortable breast shields. Ideal for daily use.</p>
+                    <a href="contact.html" class="inline-flex items-center gap-1 text-violet-600 font-semibold text-sm hover:underline">Get this pump →</a>
+                </div>
+
+                <!-- Card 2: Ardo Calypso -->
+                <div class="card-lift bg-gradient-to-br from-white to-indigo-50/40 p-7 rounded-2xl border border-indigo-100 shadow-sm fade-in">
+                    <img src="./featuredproducts/pumps/ardo calypso.jpg" alt="Ardo Calypso" class="w-full h-44 object-contain mb-5 rounded-xl bg-indigo-50 p-3">
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Ardo Calypso</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Compact and portable double pump from Ardo. Features the same gentle suction technology in a lightweight, travel-friendly design for moms on the go.</p>
+                    <a href="contact.html" class="inline-flex items-center gap-1 text-indigo-600 font-semibold text-sm hover:underline">Get this pump →</a>
+                </div>
+
+                <!-- Card 3: Spectra S1 -->
+                <div class="card-lift bg-gradient-to-br from-white to-pink-50/40 p-7 rounded-2xl border border-pink-100 shadow-sm fade-in">
+                    <img src="./featuredproducts/pumps/spectra_s1_breast_pump.webp" alt="Spectra S1" class="w-full h-44 object-contain mb-5 rounded-xl bg-pink-50 p-3">
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Spectra S1</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Rechargeable hospital-strength pump with a built-in nightlight. Closed system design keeps milk pure. A top-rated choice among nursing moms.</p>
+                    <a href="contact.html" class="inline-flex items-center gap-1 text-pink-600 font-semibold text-sm hover:underline">Get this pump →</a>
+                </div>
+
+                <!-- Card 4: Motif Luna -->
+                <div class="card-lift bg-gradient-to-br from-white to-green-50/40 p-7 rounded-2xl border border-green-100 shadow-sm fade-in">
+                    <img src="./featuredproducts/pumps/motif.jpg" alt="Motif Luna" class="w-full h-44 object-contain mb-5 rounded-xl bg-green-50 p-3">
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Motif Luna</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Ultra-quiet double electric pump with a sleek design. Features one-touch let-down mode and a powerful motor in a surprisingly compact body.</p>
+                    <a href="contact.html" class="inline-flex items-center gap-1 text-green-600 font-semibold text-sm hover:underline">Get this pump →</a>
+                </div>
+
+                <!-- Card 5: Zomee -->
+                <div class="card-lift bg-gradient-to-br from-white to-amber-50/40 p-7 rounded-2xl border border-amber-100 shadow-sm fade-in">
+                    <img src="./featuredproducts/pumps/zomee.webp" alt="Zomee Breast Pump" class="w-full h-44 object-contain mb-5 rounded-xl bg-amber-50 p-3">
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Zomee</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Portable, rechargeable double pump perfect for busy moms. Lightweight design with strong suction and easy-to-clean parts for everyday convenience.</p>
+                    <a href="contact.html" class="inline-flex items-center gap-1 text-amber-600 font-semibold text-sm hover:underline">Get this pump →</a>
+                </div>
+
+                <!-- Card 6: Alyssa Hand Pump -->
+                <div class="card-lift bg-gradient-to-br from-white to-cyan-50/40 p-7 rounded-2xl border border-cyan-100 shadow-sm fade-in">
+                    <img src="./featuredproducts/pumps/alyssa hand pump.png" alt="Ardo Alyssa Hand Pump" class="w-full h-44 object-contain mb-5 rounded-xl bg-cyan-50 p-3">
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Ardo Alyssa Hand Pump</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Ergonomic manual breast pump — perfect as a backup or for occasional use. Simple, quiet, and easy to assemble with Ardo's gentle vacuum technology.</p>
+                    <a href="contact.html" class="inline-flex items-center gap-1 text-cyan-600 font-semibold text-sm hover:underline">Get this pump →</a>
+                </div>
+            </div>
+
+            <div class="text-center mt-10 fade-in">
+                <p class="text-gray-500 mb-4">Don't see your preferred pump? We carry many more brands. Contact us to check availability.</p>
+                <a href="products.html" class="text-indigo-600 font-semibold hover:underline">View all products →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== ALSO AVAILABLE ========== -->
+    <section class="py-14 md:py-20 px-4 md:px-8 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12 fade-in">
+                <div class="inline-block px-4 py-2 bg-gray-100 text-gray-700 rounded-full text-sm font-semibold mb-4">We Also Carry</div>
+                <h2 class="text-2xl md:text-3xl font-extrabold mb-3">Additional Medical Supplies</h2>
+                <p class="text-gray-500 max-w-xl mx-auto">Beyond breast pumps, Comfit offers a full range of medical support products — all insurance eligible.</p>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+                <div class="text-center p-5 bg-gray-50 rounded-2xl border border-gray-100 fade-in">
+                    <div class="w-12 h-12 bg-indigo-100 rounded-xl flex items-center justify-center mx-auto mb-3">
+                        <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                    </div>
+                    <h4 class="font-bold text-sm text-gray-800">Compression Stockings</h4>
+                </div>
+                <div class="text-center p-5 bg-gray-50 rounded-2xl border border-gray-100 fade-in">
+                    <div class="w-12 h-12 bg-pink-100 rounded-xl flex items-center justify-center mx-auto mb-3">
+                        <svg class="w-6 h-6 text-pink-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+                    </div>
+                    <h4 class="font-bold text-sm text-gray-800">Maternity Support</h4>
+                </div>
+                <div class="text-center p-5 bg-gray-50 rounded-2xl border border-gray-100 fade-in">
+                    <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mx-auto mb-3">
+                        <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+                    </div>
+                    <h4 class="font-bold text-sm text-gray-800">Post-Surgical Binders</h4>
+                </div>
+                <div class="text-center p-5 bg-gray-50 rounded-2xl border border-gray-100 fade-in">
+                    <div class="w-12 h-12 bg-amber-100 rounded-xl flex items-center justify-center mx-auto mb-3">
+                        <svg class="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/></svg>
+                    </div>
+                    <h4 class="font-bold text-sm text-gray-800">Hernia &amp; Specialty</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== WHY CHOOSE COMFIT ========== -->
+    <section class="py-16 md:py-24 px-4 md:px-8 bg-gradient-to-br from-indigo-50/60 to-violet-50/40">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-14 fade-in">
+                <div class="inline-block px-4 py-2 bg-violet-100 text-violet-700 rounded-full text-sm font-semibold mb-4">Why Comfit?</div>
+                <h2 class="text-3xl md:text-5xl font-extrabold mb-4">The <span class="gradient-text">Comfit Difference</span></h2>
+                <p class="text-gray-600 max-w-2xl mx-auto text-lg">We make getting your breast pump through insurance simple, fast, and completely stress-free.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- We Handle Insurance -->
+                <div class="text-center fade-in">
+                    <div class="w-20 h-20 bg-gradient-to-br from-indigo-500 to-violet-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-xl">
+                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-900">We Handle the Insurance</h3>
+                    <p class="text-gray-600 leading-relaxed">No confusing forms or phone calls. Our specialists verify your benefits, submit your claim, and coordinate directly with your insurance so your breast pump is covered.</p>
+                </div>
+
+                <!-- Top Pump Brands -->
+                <div class="text-center fade-in">
+                    <div class="w-20 h-20 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-xl">
+                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-900">Top Brand Selection</h3>
+                    <p class="text-gray-600 leading-relaxed">Choose from Ardo Melia, Ardo Calypso, Spectra, Motif, Zomee, and more. We carry all the top-rated breast pump brands nursing mothers love and trust.</p>
+                </div>
+
+                <!-- Zero Cost -->
+                <div class="text-center fade-in">
+                    <div class="w-20 h-20 bg-gradient-to-br from-purple-500 to-pink-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-xl">
+                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-900">$0 Out-of-Pocket*</h3>
+                    <p class="text-gray-600 leading-relaxed">Most insurance plans cover breast pumps at no cost to you under the Affordable Care Act. We verify your exact coverage so there are never any surprise charges.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== INSURANCE ACCEPTED ========== -->
+    <section class="py-16 md:py-20 px-4 md:px-8 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12 fade-in">
+                <div class="inline-block px-4 py-2 bg-green-100 text-green-700 rounded-full text-sm font-semibold mb-4">Insurance Accepted</div>
+                <h2 class="text-3xl md:text-4xl font-extrabold mb-4">Your Breast Pump, <span class="gradient-text">Covered by Insurance</span></h2>
+                <p class="text-gray-600 max-w-2xl mx-auto text-lg">Under the Affordable Care Act, most insurance plans cover breast pumps. We partner with 25+ insurers and handle the entire claims process for you.</p>
+            </div>
+
+            <!-- Insurance logos marquee -->
+            <div class="overflow-hidden py-6 fade-in">
+                <div class="logo-scroll">
+                    <img src="./featuredproducts/insurance logos/Aetna.avif" alt="Aetna" class="h-12 md:h-16 object-contain opacity-70 hover:opacity-100 transition">
+                    <img src="./featuredproducts/insurance logos/Cigna.avif" alt="Cigna" class="h-12 md:h-16 object-contain opacity-70 hover:opacity-100 transition">
+                    <img src="./featuredproducts/insurance logos/United Healthcare.avif" alt="United Healthcare" class="h-12 md:h-16 object-contain opacity-70 hover:opacity-100 transition">
+                    <img src="./featuredproducts/insurance logos/BlueCross BlueShield.avif" alt="BlueCross BlueShield" class="h-12 md:h-16 object-contain opacity-70 hover:opacity-100 transition">
+                    <img src="./featuredproducts/insurance logos/Humana.avif" alt="Humana" class="h-12 md:h-16 object-contain opacity-70 hover:opacity-100 transition">
+                    <img src="./featuredproducts/insurance logos/Medicare.avif" alt="Medicare" class="h-12 md:h-16 object-contain opacity-70 hover:opacity-100 transition">
+                    <img src="./featuredproducts/insurance logos/Medicaid.avif" alt="Medicaid" class="h-12 md:h-16 object-contain opacity-70 hover:opacity-100 transition">
+                    <!-- Duplicate for seamless scroll -->
+                    <img src="./featuredproducts/insurance logos/Aetna.avif" alt="Aetna" class="h-12 md:h-16 object-contain opacity-70 hover:opacity-100 transition">
+                    <img src="./featuredproducts/insurance logos/Cigna.avif" alt="Cigna" class="h-12 md:h-16 object-contain opacity-70 hover:opacity-100 transition">
+                    <img src="./featuredproducts/insurance logos/United Healthcare.avif" alt="United Healthcare" class="h-12 md:h-16 object-contain opacity-70 hover:opacity-100 transition">
+                    <img src="./featuredproducts/insurance logos/BlueCross BlueShield.avif" alt="BlueCross BlueShield" class="h-12 md:h-16 object-contain opacity-70 hover:opacity-100 transition">
+                    <img src="./featuredproducts/insurance logos/Humana.avif" alt="Humana" class="h-12 md:h-16 object-contain opacity-70 hover:opacity-100 transition">
+                    <img src="./featuredproducts/insurance logos/Medicare.avif" alt="Medicare" class="h-12 md:h-16 object-contain opacity-70 hover:opacity-100 transition">
+                    <img src="./featuredproducts/insurance logos/Medicaid.avif" alt="Medicaid" class="h-12 md:h-16 object-contain opacity-70 hover:opacity-100 transition">
+                </div>
+            </div>
+
+            <div class="text-center mt-8 fade-in">
+                <p class="text-gray-500 text-sm mb-4">Don't see your insurance? We accept many more plans.</p>
+                <a href="insurance.html" class="text-indigo-600 font-semibold hover:underline">View all accepted insurance →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== HOW IT WORKS ========== -->
+    <section class="py-16 md:py-24 px-4 md:px-8 bg-gradient-to-br from-gray-50 to-indigo-50/30">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-14 fade-in">
+                <div class="inline-block px-4 py-2 bg-indigo-100 text-indigo-700 rounded-full text-sm font-semibold mb-4">Simple Process</div>
+                <h2 class="text-3xl md:text-5xl font-extrabold mb-4">How to Get Your <span class="gradient-text">Breast Pump</span></h2>
+                <p class="text-gray-600 max-w-xl mx-auto text-lg">Getting your insurance-covered breast pump is easy. Here's how it works.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-6">
+                <!-- Step 1 -->
+                <div class="text-center fade-in relative">
+                    <div class="w-16 h-16 bg-gradient-to-br from-indigo-600 to-violet-600 text-white rounded-full flex items-center justify-center text-2xl font-extrabold mx-auto mb-5 shadow-lg">1</div>
+                    <h3 class="font-bold text-lg mb-2">Contact Us</h3>
+                    <p class="text-gray-600 text-sm">Reach out by phone, email, or our contact form. Tell us you'd like a breast pump!</p>
+                    <!-- Connector line (hidden on mobile) -->
+                    <div class="hidden md:block absolute top-8 left-[60%] w-[80%] h-0.5 bg-gradient-to-r from-indigo-300 to-violet-300"></div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="text-center fade-in relative">
+                    <div class="w-16 h-16 bg-gradient-to-br from-violet-600 to-purple-600 text-white rounded-full flex items-center justify-center text-2xl font-extrabold mx-auto mb-5 shadow-lg">2</div>
+                    <h3 class="font-bold text-lg mb-2">We Verify Insurance</h3>
+                    <p class="text-gray-600 text-sm">We check your plan, confirm coverage, and let you know exactly which pumps are covered at $0.</p>
+                    <div class="hidden md:block absolute top-8 left-[60%] w-[80%] h-0.5 bg-gradient-to-r from-violet-300 to-purple-300"></div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="text-center fade-in relative">
+                    <div class="w-16 h-16 bg-gradient-to-br from-purple-600 to-pink-600 text-white rounded-full flex items-center justify-center text-2xl font-extrabold mx-auto mb-5 shadow-lg">3</div>
+                    <h3 class="font-bold text-lg mb-2">Choose Your Pump</h3>
+                    <p class="text-gray-600 text-sm">Pick from Ardo Melia, Spectra, Motif, and more. We'll help you find the perfect fit for your lifestyle.</p>
+                    <div class="hidden md:block absolute top-8 left-[60%] w-[80%] h-0.5 bg-gradient-to-r from-purple-300 to-pink-300"></div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="text-center fade-in">
+                    <div class="w-16 h-16 bg-gradient-to-br from-pink-600 to-rose-600 text-white rounded-full flex items-center justify-center text-2xl font-extrabold mx-auto mb-5 shadow-lg">4</div>
+                    <h3 class="font-bold text-lg mb-2">Receive Your Pump</h3>
+                    <p class="text-gray-600 text-sm">Your breast pump is delivered right to your door — or pick it up at our Brooklyn location.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== ACCREDITATIONS & TRUST ========== -->
+    <section class="py-14 md:py-20 px-4 md:px-8 bg-white">
+        <div class="max-w-4xl mx-auto text-center fade-in">
+            <h2 class="text-2xl md:text-3xl font-extrabold mb-8">Accredited &amp; Certified</h2>
+            <div class="flex items-center justify-center gap-8 md:gap-16 flex-wrap mb-8">
+                <img src="./featuredproducts/accreditedby.png" alt="Accredited By" class="h-16 md:h-24 object-contain">
+                <img src="./featuredproducts/certifiedby.png" alt="Certified By" class="h-16 md:h-24 object-contain">
+            </div>
+            <p class="text-gray-500 max-w-xl mx-auto">Comfit Surgical Supplies is a fully accredited and certified DME (Durable Medical Equipment) provider, compliant with all HIPAA privacy regulations.</p>
+        </div>
+    </section>
+
+    <!-- ========== FINAL CTA SECTION ========== -->
+    <section class="py-20 md:py-28 px-4 md:px-8 bg-gradient-to-br from-indigo-600 via-violet-600 to-purple-700 text-white relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-72 h-72 bg-white/10 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 right-0 w-96 h-96 bg-violet-400/15 rounded-full blur-3xl"></div>
+
+        <div class="max-w-4xl mx-auto text-center relative z-10 fade-in">
+            <div class="inline-flex items-center gap-2 px-4 py-2 bg-white/15 backdrop-blur-sm rounded-full text-white text-sm mb-6">
+                🤝 Let's Get Started
+            </div>
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-6 leading-tight">Get Your Breast Pump<br>Through Insurance Today</h2>
+            <p class="text-lg md:text-xl text-indigo-100 mb-10 max-w-2xl mx-auto leading-relaxed">
+                Join over 1,000 moms who got their Ardo Melia and other top breast pumps through Comfit — at no cost. Contact us today and we'll take care of everything.
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-4 justify-center mb-10">
+                <a href="contact.html" class="inline-flex items-center justify-center gap-2 px-10 py-5 bg-white text-indigo-600 rounded-full font-bold text-lg shadow-2xl hover:shadow-3xl hover:scale-105 transition-all pulse-ring">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+                    Contact Us Now
+                </a>
+                <a href="tel:+17184008370" class="inline-flex items-center justify-center gap-2 px-10 py-5 border-2 border-white/40 text-white rounded-full font-bold text-lg hover:bg-white/10 backdrop-blur-sm transition-all">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                    Call 718-400-8370
+                </a>
+            </div>
+
+            <!-- Quick info cards -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl mx-auto">
+                <div class="bg-white/10 backdrop-blur-sm rounded-xl px-4 py-4">
+                    <div class="text-sm font-semibold text-white mb-1">📍 Visit Us</div>
+                    <div class="text-xs text-indigo-200">223 Lee Ave<br>Brooklyn, NY 11206</div>
+                </div>
+                <div class="bg-white/10 backdrop-blur-sm rounded-xl px-4 py-4">
+                    <div class="text-sm font-semibold text-white mb-1">🕐 Hours</div>
+                    <div class="text-xs text-indigo-200">Sun–Thu: 11AM–6PM<br>Fri: 10AM–1PM</div>
+                </div>
+                <div class="bg-white/10 backdrop-blur-sm rounded-xl px-4 py-4">
+                    <div class="text-sm font-semibold text-white mb-1">✉️ Email</div>
+                    <div class="text-xs text-indigo-200"><a href="mailto:info@comfitinc.com" class="hover:text-white transition">info@comfitinc.com</a></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="px-4 py-10 md:px-8 bg-gray-50 border-t">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6 mb-6">
+                <div class="flex items-center gap-3">
+                    <img src="./images/Untitled design (81).png" alt="Comfit" class="w-10 h-10 rounded-lg object-contain">
+                    <div>
+                        <div class="font-bold text-gray-800">Comfit Surgical Supplies</div>
+                        <div class="text-xs text-gray-500">223 Lee Ave, Brooklyn, NY 11206</div>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4 text-sm text-gray-500">
+                    <a href="about.html" class="hover:text-indigo-600 transition">About</a>
+                    <a href="products.html" class="hover:text-indigo-600 transition">Products</a>
+                    <a href="insurance.html" class="hover:text-indigo-600 transition">Insurance</a>
+                    <a href="privacy-policy.html" class="hover:text-indigo-600 transition">Privacy</a>
+                    <a href="contact.html" class="hover:text-indigo-600 transition">Contact</a>
+                </div>
+            </div>
+            <div class="text-xs text-center text-gray-400 border-t border-gray-200 pt-6">
+                &copy; 2025 Comfit Surgical Supplies Co. All rights reserved. &nbsp;|&nbsp;
+                <a href="hipaa-privacy.html" class="hover:text-indigo-600 transition">HIPAA Privacy</a> &nbsp;|&nbsp;
+                <a href="dme-scope.html" class="hover:text-indigo-600 transition">DME Scope of Services</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========== FLOATING MOBILE CTA ========== -->
+    <div class="floating-cta">
+        <a href="contact.html" class="flex-1 text-center px-4 py-3 bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-full font-bold text-sm shadow-lg">
+            Contact Us
+        </a>
+        <a href="tel:+17184008370" class="flex-1 text-center px-4 py-3 border-2 border-indigo-600 text-indigo-600 rounded-full font-bold text-sm">
+            Call Now
+        </a>
+    </div>
+
+    <!-- ========== SCRIPTS ========== -->
+    <script>
+        // Intersection Observer for scroll fade-in animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    // Stagger the animation slightly for grid children
+                    const delay = entry.target.dataset.delay || 0;
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, delay);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+        document.querySelectorAll('.fade-in').forEach((el, i) => {
+            // Add stagger delay for cards in grids
+            const parent = el.parentElement;
+            if (parent && parent.classList.contains('grid')) {
+                const siblings = Array.from(parent.querySelectorAll('.fade-in'));
+                const idx = siblings.indexOf(el);
+                el.dataset.delay = idx * 100;
+            }
+            observer.observe(el);
+        });
+
+        // Hide floating CTA when at top of page, show on scroll
+        const floatingCta = document.querySelector('.floating-cta');
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.scrollY;
+            if (currentScroll > 400) {
+                floatingCta.style.display = '';
+            }
+            lastScroll = currentScroll;
+        }, { passive: true });
+        // Initially hidden on mobile until scroll
+        if (window.innerWidth <= 768) {
+            floatingCta.style.display = 'none';
+        }
+    </script>
+</body>
+</html>
